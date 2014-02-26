@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226185051) do
+ActiveRecord::Schema.define(version: 20140226204323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 20140226185051) do
     t.string  "name"
     t.float   "price"
     t.integer "section_id"
+  end
+
+  create_table "menus", force: true do |t|
+    t.string  "name"
+    t.integer "restaurant_id"
   end
 
   create_table "sections", force: true do |t|

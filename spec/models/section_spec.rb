@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Section do
   before do
-    @apps = Section.create(name: 'Appetizers')
+    @menu = Menu.create(name: "Dinner")
+    @apps = Section.create(name: 'Appetizers', menu_id: @menu.id)
     @item = MenuItem.create(
       name: 'food',
       price: 10.99,
@@ -17,4 +18,9 @@ describe Section do
   it "has many food items" do
     @apps.menu_items.should include @item
   end
+
+  it "belongs to a menu" do
+    @apps.menu.should eq @menu
+  end
+
 end
