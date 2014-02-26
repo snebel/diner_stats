@@ -2,15 +2,10 @@ require 'spec_helper'
 
 describe Menu do
   before do
-    @menu = Menu.create(name: "Dinner")
-    @apps = Section.create(name:"Appetizers", menu_id: @menu.id)
-    @mains = Section.create(name: "Mains")
-    @item = MenuItem.create(
-      name: 'food',
-      price: 10.99,
-      section_id: @apps.id
-    )
-    @menu.sections << @mains
+    @menu = create(:menu)
+    @apps = create(:section, menu_id: @menu.id)
+    @mains = create(:section, menu_id: @menu.id)
+    @item = create(:menu_item, section_id: @apps.id)
   end
 
   it "has many sections" do
@@ -20,5 +15,9 @@ describe Menu do
 
   it "has menu items from multiple sections" do
     @menu.menu_items.should eq @apps.menu_items + @mains.menu_items
+  end
+
+  it "has many meals" do
+
   end
 end

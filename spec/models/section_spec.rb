@@ -2,13 +2,8 @@ require 'spec_helper'
 
 describe Section do
   before do
-    @menu = Menu.create(name: "Dinner")
-    @apps = Section.create(name: 'Appetizers', menu_id: @menu.id)
-    @item = MenuItem.create(
-      name: 'food',
-      price: 10.99,
-      section_id: @apps.id
-    )
+    @apps = create(:section)
+    @item = create(:menu_item, section_id: @apps.id)
   end
 
   it "has a name" do
@@ -20,7 +15,7 @@ describe Section do
   end
 
   it "belongs to a menu" do
-    @apps.menu.should eq @menu
+    @apps.menu.should_not be_nil
   end
 
 end
