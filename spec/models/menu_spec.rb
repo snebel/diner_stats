@@ -6,6 +6,7 @@ describe Menu do
     @apps = create(:section, menu_id: @menu.id)
     @mains = create(:section, menu_id: @menu.id)
     @item = create(:menu_item, section_id: @apps.id)
+    @meal = create(:meal, menu_id: @menu.id)
   end
 
   it "has many sections" do
@@ -18,6 +19,6 @@ describe Menu do
   end
 
   it "has many meals" do
-
+    @menu.meals.should include @meal
   end
 end

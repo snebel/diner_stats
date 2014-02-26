@@ -3,6 +3,7 @@ require 'spec_helper'
 describe MenuItem do
   before do
     @item = build(:menu_item)
+    @meal = build(:meal)
   end
 
   it "has a name and price" do
@@ -11,7 +12,12 @@ describe MenuItem do
   end
 
   it "can be added to the appetizers list" do
-    # @apps.menu_items << @item
-    @item.section.name.should eq "Appetizers" # eq @apps
+    @item.section.name.should eq "Appetizers"
   end
+
+  it "has many meals" do
+    @item.meals << @meal
+    @item.meals.should include @meal
+  end
+
 end
