@@ -10,7 +10,7 @@ group :development,:test do
 end
 
 gem 'simplecov', :require => false, :group => :test
-
+gem 'pry'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
