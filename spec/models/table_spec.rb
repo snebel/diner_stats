@@ -11,4 +11,8 @@ describe Table do
     @table.meals.should include @meal1
     @table.meals.should include @meal2
   end
+
+  it "belongs to a restaurant" do
+    @table.restaurant.should be_valid
+  end
 end

@@ -9,6 +9,10 @@ describe Menu do
     @meal = create(:meal, menu_id: @menu.id)
   end
 
+  it "belongs to a restaurant" do
+    @menu.restaurant.should be_valid
+  end
+
   it "has many sections" do
     @menu.sections.should include @apps
     @menu.sections.should include @mains
