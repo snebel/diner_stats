@@ -11,7 +11,7 @@ describe MenuItem do
     @item.price.should eq 1.99
   end
 
-  it "can be added to the appetizers list" do
+  it "can be added to the appetizers section" do
     @item.section.name.should eq "Appetizers"
   end
 

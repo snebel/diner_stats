@@ -11,6 +11,10 @@ describe Meal do
     @meal.menu.should eq @menu
   end
 
+  it "belongs to a table" do
+    @meal.table.should be_valid
+  end
+
   it "has many menu items" do
     @meal.menu_items << @item
     @meal.menu_items.should include @item
