@@ -1,0 +1,62 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/models/meal_membership.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/models/meal.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/models/menu_item.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/models/menu.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/models/restaurant.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/models/section.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/models/table.rb": [
+        1,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1393462508
+  }
+}

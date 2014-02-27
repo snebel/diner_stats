@@ -9,6 +9,8 @@ group :development,:test do
   gem "factory_girl_rails"
 end
 
+gem 'simplecov', :require => false, :group => :test
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 
