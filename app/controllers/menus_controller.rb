@@ -1,17 +1,8 @@
 class MenusController < ApplicationController
-  
-  def new
-    # @menu = Menu.new(restaurant_id: params[:restaurant_id])
-    @menu = Menu.new
-    # binding.pry
-  end
 
   def create
-    menu = Menu.new(menu_params)
-    menu.restaurant_id = params[:restaurant_id]
-    menu.save
-    restaurant = Restaurant.find(params[:restaurant_id])
-    redirect_to edit_restaurant_menu_path(restaurant.id, menu.id)
+    menu = Menu.create(menu_params)
+    redirect_to restaurant_path(params[:restaurant_id])
   end
 
   def edit
@@ -21,7 +12,7 @@ class MenusController < ApplicationController
 
 private
   def menu_params
-    params.require('menu').permit(:name)
+    params.permit(:name, :restaurant_id)
   end
 end
 

@@ -17,4 +17,6 @@
 <% end %>
 </ul>
 
+<%= link_to "back to #{@restaurant.name}", restaurant_path(@restaurant.id) %>
+
 <%= javascript_include_tag 'edit_menu' %>
