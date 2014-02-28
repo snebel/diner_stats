@@ -1,0 +1,23 @@
+<h1>Add Menu Items to <%= @section.name %></h1>
+
+<%= form_tag('/menu_items', method: 'post') do %>
+  <%= hidden_field_tag :section_id, value = @section.id %>
+  <%= text_field_tag :name, nil, placeholder: 'item name', id: 'section-name' %>
+  <%= text_field_tag :price, nil, placeholder: 'price', id: 'section-name' %>
+  <%= submit_tag 'add item' %>
+<% end %>
+
+<h2>Items</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+  <% @section.menu_items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+    </tr>
+  <% end %>
+</table>
+

@@ -12,6 +12,7 @@ DinerStats::Application.routes.draw do
   end
 
   resources :sections, only: [:destroy]
+  resources :menu_items, only: [:create]
   # resources :menus do
   #   resources :sections, only: [:create]
   # end

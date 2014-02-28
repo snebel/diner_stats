@@ -2,7 +2,7 @@
 
 // e.target.data('id');
 // e.target.data('pizza');
-var el;
+
 $('#add-section').on('click', function(e){
   e.preventDefault();
   $.ajax({
@@ -30,9 +30,6 @@ function appendSection(data) {
 
 $('.delete-section').on('click', function(e){
   e.preventDefault();
-  // console.log(e);
-  // e.target.parentElement.parent().remove(function() {
-    // let's try to grab the li
   $('#' + e.target.id).remove();
   // });
   $.ajax({

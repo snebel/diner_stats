@@ -6,10 +6,11 @@ class SectionsController < ApplicationController
 
   def destroy
     Section.delete(params[:id])
-    # respond_to do |format|
-    #   format.json { :success => true }.as_json
-    # end
     render json: "deleted", :status => :ok
+  end
+
+  def edit
+    @section = Section.find(params[:id])  
   end
   
 end
