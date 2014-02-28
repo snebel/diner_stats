@@ -1,7 +1,13 @@
 
 
 <h1>Edit Menu</h1>
-<%= form_tag do %>
-  <%= text_field_tag :name, nil, placeholder: 'menu section' %>
-  <%= submit_tag 'add section' %>
-<% end %>
+
+<%= text_field_tag :name, nil, placeholder: 'menu section', id: 'section-name' %>
+<%= hidden_field_tag :menu, value = @menu.id %>
+<%= button_tag 'add section', id: 'add-section' %>
+
+
+<h2><%= "#{@restaurant.name}: #{@menu.name}" %></h2>
+<h3 id='sections'></h3>
+
+<%= javascript_include_tag 'edit_menu' %>

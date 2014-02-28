@@ -15,6 +15,7 @@ class MenusController < ApplicationController
   end
 
   def edit
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @menu = Menu.find(params[:id])
   end
 
