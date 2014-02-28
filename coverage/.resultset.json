@@ -5,6 +5,96 @@
         1,
         null
       ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/helpers/menu_items_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/helpers/menus_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/helpers/restaurant_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/helpers/sections_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/controllers/menu_items_controller.rb": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/controllers/menus_controller.rb": [
+        1,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/controllers/restaurants_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/Nebs/ga_wdi/projects/diner_stats/app/controllers/sections_controller.rb": [
+        1,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        null
+      ],
       "/Users/Nebs/ga_wdi/projects/diner_stats/app/models/meal_membership.rb": [
         1,
         1,
@@ -57,6 +147,6 @@
         null
       ]
     },
-    "timestamp": 1393462727
+    "timestamp": 1393624213
   }
 }

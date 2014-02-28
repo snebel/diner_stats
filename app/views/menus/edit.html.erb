@@ -1,13 +1,12 @@
 
 <h1>Edit Menu</h1>
+<h2><%= "#{@restaurant.name}: #{@menu.name}" %></h2>
 
 <%= text_field_tag :name, nil, placeholder: 'menu section', id: 'section-name' %>
 <%= hidden_field_tag :restaurant, value = @restaurant.id %>
 <%= hidden_field_tag :menu, value = @menu.id %>
 <%= button_tag 'add section', id: 'add-section' %>
 
-
-<h2><%= "#{@restaurant.name}: #{@menu.name}" %></h2>
 <ul id='sections'>
 <% @menu.sections.each do |section| %>
   <li id="<%= section.id %>">
