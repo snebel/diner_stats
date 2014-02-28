@@ -17,7 +17,10 @@
     <tr>
       <td><%= item.name %></td>
       <td><%= item.price %></td>
+      <td><%= button_to 'delete', item, method: :delete %></td>
     </tr>
   <% end %>
 </table>
+
+<%= link_to 'back to menu', edit_restaurant_menu_path(@restaurant_id, @section.menu_id) %>
 

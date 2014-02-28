@@ -11,6 +11,7 @@ class SectionsController < ApplicationController
 
   def edit
     @section = Section.find(params[:id])  
+    @restaurant_id = Menu.find(params[:menu_id]).restaurant_id
   end
   
 end
