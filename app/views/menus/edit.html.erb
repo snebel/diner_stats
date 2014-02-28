@@ -3,11 +3,16 @@
 <h1>Edit Menu</h1>
 
 <%= text_field_tag :name, nil, placeholder: 'menu section', id: 'section-name' %>
+<%= hidden_field_tag :restaurant, value = @restaurant.id %>
 <%= hidden_field_tag :menu, value = @menu.id %>
 <%= button_tag 'add section', id: 'add-section' %>
 
 
 <h2><%= "#{@restaurant.name}: #{@menu.name}" %></h2>
-<h3 id='sections'></h3>
+<ul id='sections'>
+<% @menu.sections.each do |section| %>
+  <li><a href="/menus/<%= @menu.id %>/sections/<%= section.id %>/edit"><%= section.name %></a></li>
+<% end %>
+</ul>
 
 <%= javascript_include_tag 'edit_menu' %>
