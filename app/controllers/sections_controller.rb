@@ -1,18 +1,15 @@
 class SectionsController < ApplicationController
   def create
-  
     @section = Section.create(name: params[:name], menu_id: params[:menu_id])
-
     render :json => @section
+  end 
 
-
+  def destroy
+    Section.delete(params[:id])
     # respond_to do |format|
-    #   format.json do
-    #     section = Section.create(name: params[:name], menu_id: params[:menu_id])
-    #   end
+    #   format.json { :success => true }.as_json
     # end
-    # redirect_to edit_restaurant_menu_path(params[:restaurant_id], params[:menu_id])
-  end  
-
+    render json: "deleted", :status => :ok
+  end
   
 end
