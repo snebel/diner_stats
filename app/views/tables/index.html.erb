@@ -1,17 +1,19 @@
 <%= stylesheet_link_tag 'tables' %>
 
-<h1><%= @restaurant.name %>'s Tables</h1>
+<h1><%= @restaurant.name %> Tables</h1>
 
 <% @tables.each do |table| %>
   <div class='table' id='<%= table.id %>'>
-    <%= form_tag do %>
-      <%= label_tag :diners %>
-      <%= select_tag(:diners, options_for_select(Array(1..table.max_seats))) %>
-      <%= button_tag 'seat' %>
-    <% end %>
+    <%= select_tag(:diners, options_for_select(Array(1..table.max_seats).reverse)) %>
+    <%= button_tag 'seat', class: 'create-meal' %>
 
-    <%= select_tag(:menu_item, options_for_select(@restaurant.menu_items)) %>
+    <%= select_tag(
+      :menu_item, 
+      options_for_select(@restaurant.menu_items.map{|item| [item, item.id]}))
+    %>
     <%= button_tag 'add item' %>
     <%= button_tag 'end meal' %>
   </div>
 <% end %>
+
+<%= javascript_include_tag 'manage_tables' %>

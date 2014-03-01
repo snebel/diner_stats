@@ -1,0 +1,2 @@
+module MealMembershipsHelper
+end
