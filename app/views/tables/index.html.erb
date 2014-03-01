@@ -6,13 +6,12 @@
   <div class='table' id='<%= table.id %>'>
     <%= select_tag(:diners, options_for_select(Array(1..table.max_seats).reverse)) %>
     <%= button_tag 'seat', class: 'create-meal' %>
-
     <%= select_tag(
       :menu_item, 
       options_for_select(@restaurant.menu_items.map{|item| [item, item.id]}))
     %>
     <%= button_tag 'add item' %>
-    <%= button_tag 'end meal' %>
+    <%= button_tag 'end meal', class: 'end-meal' %>
   </div>
 <% end %>
 
