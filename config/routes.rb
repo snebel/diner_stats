@@ -17,10 +17,8 @@ DinerStats::Application.routes.draw do
   resources :tables, only: [:show] do
     resources :meals, only: [:create, :update]
   end
-  # resources :menus do
-  #   resources :sections, only: [:create]
-  # end
-  # post '/menus/:menu_id/sections' => 'sections#create'
+  
+  resources :meal_memberships, only: [:create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

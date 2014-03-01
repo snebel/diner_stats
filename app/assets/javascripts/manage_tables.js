@@ -3,7 +3,6 @@
 $('.create-meal').on('click', function(e){
   e.preventDefault();
   var table = $(e.target).parent()[0];
-  // var item_id = $(table).children('#menu_item')[0].value;
   var diners = $(table).children('#diners')[0].value;
 
   $.ajax({
@@ -24,7 +23,6 @@ $('.create-meal').on('click', function(e){
 //ajax for ending/updating a meal
 $('.end-meal').on('click', function(e){
   e.preventDefault();
-  console.log(e.target)
   var table = $(e.target).parent()[0];
 
   $.ajax({
@@ -40,7 +38,27 @@ $('.end-meal').on('click', function(e){
     }
   });
 })
+var table;
+//ajax for adding an item to a meal
+$('.add-item').on('click', function(e){
+  e.preventDefault();
+  table = $(e.target).parent()[0];
+  var meal_id = $(table).children('.end-meal')[0].id
+  var item_id = $(table).children('#menu_item')[0].value;
 
-
+  $.ajax({
+    method: 'post',
+    url: '/meal_memberships',
+    dataType: 'json',
+    data: {meal_id: meal_id, menu_item_id: item_id},
+    success: function(data){
+      console.log(data)
+      // update price of meal
+    },
+    error: function(data){
+      console.log('adding item failed');
+    }
+  });
+})
 
 
