@@ -14,7 +14,9 @@ class MenuItemsController < ApplicationController
 
   def show
     @item = MenuItem.find(params[:id])
-    @meals = @item.meals
+    @meals = @item.meals.uniq
+    @table_percent = @item.table_percent
+    @item_percent = @item.item_percent
   end
 
   private
