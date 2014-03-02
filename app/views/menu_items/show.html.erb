@@ -1,4 +1,6 @@
-<h1>All Meals at <%= @restaurant.name %></h1>
+<h1><%= @item %></h1>
+
+<h3>Frequency: Ordered in <%= ((@meals.count.to_f / Meal.count)*100).round(1) %>% of meals</h3>
 
 <table border='1px'>
 	<tr>

@@ -12,6 +12,11 @@ class MenuItemsController < ApplicationController
     redirect_to edit_menu_section_path(section.menu_id, section.id)
   end
 
+  def show
+    @item = MenuItem.find(params[:id])
+    @meals = @item.meals
+  end
+
   private
   def item_params
     params.permit(:name, :price, :section_id)
