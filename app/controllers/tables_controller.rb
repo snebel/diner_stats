@@ -4,8 +4,12 @@ class TablesController < ApplicationController
     redirect_to restaurant_path(params[:restaurant_id])
   end
 
-  def index
+  def manage
     @restaurant = Restaurant.find(params[:restaurant_id])
+    @tables = @restaurant.tables
+  end
+
+  def index
     @tables = @restaurant.tables
   end
 
