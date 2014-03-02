@@ -15,6 +15,11 @@ class MealsController < ApplicationController
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
     @meals = @restaurant.meals
+    @diners = @restaurant.total_diners
+    @avg_duration = @restaurant.avg_duration
+    @revenue = @restaurant.revenue
+    @avg_price = (@revenue / @meals.count).round(2)
+    @avg_customer_price = (@revenue / @diners).round(2) #@restaurant.avg_customer_price
   end
 
   private

@@ -1,5 +1,14 @@
 <h1>All Meals at <%= @restaurant.name %></h1>
 
+
+<h3>Total Meals: <%= @meals.count %> </h3>
+<h3>Total Revenue: $<%= @revenue %> </h3>
+<h3>Total Customers: <%= @diners %> (<%= (@diners.to_f / @meals.count).round(1) %> customers/meal)</h3>
+
+<h3>Average Duration: <%= @avg_duration %> minutes</h3>
+<h3>Average Meal Price: $<%= @avg_price %></h3>	
+<h3>Average Price/Customer: $<%= @avg_customer_price %></h3>	
+
 <table border='1px'>
 	<tr>
 		<th>Date</th>
