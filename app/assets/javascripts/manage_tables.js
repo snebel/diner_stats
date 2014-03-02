@@ -65,4 +65,6 @@ $('.add-item').on('click', function(e){
   });
 })
 
-
+  $(function() {
+    $( ".table" ).draggable();
+  });
