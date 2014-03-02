@@ -1,0 +1,22 @@
+<h1>All Meals at <%= @restaurant.name %></h1>
+
+<table border='1px'>
+	<tr>
+		<th>Date</th>
+		<th>Diners</th>
+		<th>Menu Items</th>
+		<th>Price ($)</th>
+		<th>Minutes</th>
+		<th>Table ID</th>
+	</tr>
+	<% @meals.each do |meal| %>
+		<tr>
+			<td><%= meal.created_at.httpdate %></td>
+			<td><%= meal.diners %></td>
+			<td><%= meal.menu_items.map {|item| item.to_s} %></td>
+			<td><%= meal.price %></td>
+			<td><%= (meal.duration / 60.0).round(2) %></td>
+			<td><%= meal.table_id %></td>
+		</tr>
+	<% end %>
+</table>

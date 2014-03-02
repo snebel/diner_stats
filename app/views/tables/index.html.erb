@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'tables' %>
 
-<h1><%= @restaurant.name %> Tables</h1>
+<h1><%= link_to @restaurant.name, restaurant_path(@restaurant) %> Tables</h1>
 
 <% @tables.each do |table| %>
   <div class='table' id='<%= table.id %>'>

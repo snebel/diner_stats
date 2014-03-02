@@ -11,6 +11,11 @@ class MealsController < ApplicationController
     render :json => meal  
   end
 
+  def index
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @meals = @restaurant.meals
+  end
+
   private
   def meal_params
     params.permit(:table_id, :diners)

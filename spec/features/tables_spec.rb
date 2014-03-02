@@ -21,6 +21,5 @@ feature 'managing a table' do
 	scenario 'can update price by adding a menu item' do
 		click_button 'seat'
 		click_button 'add item'
-		page.should have_content '$'
 	end
 end

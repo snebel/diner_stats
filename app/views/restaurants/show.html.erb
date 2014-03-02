@@ -19,3 +19,5 @@
   <%= select_tag(:max_seats, options_for_select([1,2,3,4])) %>
   <%= submit_tag 'add table' %>
 <% end %>
+
+<h2><%= link_to 'Meals/Stats', restaurant_meals_path(@restaurant.id) %></h2>

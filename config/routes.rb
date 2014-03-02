@@ -2,6 +2,7 @@ DinerStats::Application.routes.draw do
   # root 'restaurants#index'
   resources :restaurants, only: [:show] do
     resources :tables, only: [:create, :index]
+    resources :meals, only: [:index]
     resources :menus, only: [:create, :edit, :show] do
       resources :sections, only: [:create]
     end   
