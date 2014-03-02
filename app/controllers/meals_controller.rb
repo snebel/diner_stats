@@ -5,9 +5,9 @@ class MealsController < ApplicationController
   end
 
   def update
-    # binding.pry
     meal = Meal.find(params[:id])
-    meal.update(duration: Time.now - meal.created_at)
+    time = Time.now - meal.created_at
+    meal.update(duration: time, price: params[:price])
     render :json => meal  
   end
 
