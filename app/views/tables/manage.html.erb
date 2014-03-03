@@ -2,8 +2,10 @@
 
 <h1 id='<%= @restaurant.id %>'><%= link_to @restaurant.name, restaurant_path(@restaurant) %> Tables</h1>
 
+
+
 <% @tables.each do |table| %>
-  <div class='table' id='<%= table.id %>'>
+  <div class='table' id='<%= table.id %>' style="left: <%= "#{table.left || 0}px"  %>; top: <%= "#{table.top || 0}px" %>; position: absolute;">
     <%= select_tag(:diners, options_for_select(Array(1..table.max_seats).reverse)) %>
     <%= button_tag 'seat', class: 'create-meal' %>
     <%= select_tag(
@@ -16,5 +18,8 @@
   </div>
 <% end %>
 
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<form id='configure'><%= button_tag 'configure tables', id: 'configure-seats' %></form>
+
+<%= javascript_include_tag '//code.jquery.com/ui/1.10.4/jquery-ui.js' %>
 <%= javascript_include_tag 'manage_tables' %>
+

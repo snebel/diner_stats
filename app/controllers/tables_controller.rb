@@ -23,6 +23,12 @@ class TablesController < ApplicationController
     @avg_customer_price = avg_customer_price(@meals)
   end
 
+  def seating
+    table_data = params[:tables].values
+    set_positions(table_data)
+    render :json => {}
+  end
+
   private
   def table_params
     params.permit(:max_seats, :restaurant_id)

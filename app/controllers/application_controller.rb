@@ -25,6 +25,11 @@ class ApplicationController < ActionController::Base
   	(revenue(meals) / total_diners(meals)).round(2)
   end
 
-
+  def set_positions(table_data)
+    table_data.each do |data|
+      # data has form [id, left, top]
+      Table.find(data[0]).update(left: data[1], top: data[2])
+    end
+  end
 
 end

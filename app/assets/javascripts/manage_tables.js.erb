@@ -66,6 +66,60 @@ $('.add-item').on('click', function(e){
   });
 })
 
-  $(function() {
+var draggable = false;
+// $(function() {
+//   $( ".table" ).draggable();
+// });
+function makeDraggable(draggable){
+  if (draggable) {
     $( ".table" ).draggable();
+  }
+  else {
+    // !$( ".table" ).draggable();
+    $('.draggable').draggable({cancel : 'div'});
+  }
+}
+
+var button = $('<button>').text('save').attr('id', 'save')
+//configure seatss
+$('#configure-seats').on('click', function(e){
+  e.preventDefault();
+  draggable = !draggable
+  makeDraggable(draggable);
+  $('#configure').append(button);
+
+  $('#save').on('click', function(e){
+    e.preventDefault();
+    $('#save').remove();
+    // var tables = tablePositions();
+
+    $.ajax({
+      method: 'post',
+      url: '/tables/seating',
+      dataType: 'json',
+      data: {tables: tablePositions()},
+      success: function(data){
+        console.log('seating success')
+      },
+      error: function(data){
+        console.log('configuring seats failed');
+      }
+    });
   });
+});
+
+function tablePositions(){
+  var table_data = [];
+  $('.table').each(function(idx, e){
+    var id = $(e).attr('id');
+    var left = $(e).css('left').replace(/[^-\d\.]/g, '');
+    var top = $(e).css('top').replace(/[^-\d\.]/g, '');
+    table_data.push([id, left, top]);
+  });
+  return table_data;
+}
+
+
+
+
+
