@@ -8,7 +8,7 @@
     <%= button_tag 'seat', class: 'create-meal' %>
     <%= select_tag(
       :menu_item, 
-      options_for_select(@restaurant.menu_items.map{|item| [item, item.id]}))
+      options_for_select(@restaurant.menu_items.map{|item| ["#{item.name} $#{item.price}", item.id]}))
     %>
     <%= button_tag 'add item', class: 'add-item' %>
     <%= button_tag 'end meal', class: 'end-meal' %>
