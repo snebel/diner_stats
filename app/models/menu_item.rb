@@ -5,7 +5,7 @@ class MenuItem < ActiveRecord::Base
 
   def item_percent
   	num = self.meal_memberships.count.to_f
-		total = Meal.all.map{|m| m.menu_items.count}.reduce(:+)
+		total = self.section.menu.meals.inject(0){|n, m| n += m.menu_items.count}
   	((num / total)*100).round(1)
   end
 
@@ -15,8 +15,12 @@ class MenuItem < ActiveRecord::Base
   	((num / total)*100).round(1)
   end
 
+  def item_revenue
+  	self.meal_memberships.count * self.price
+  end
+
   def to_s
-    "#{self.name} $#{self.price}"
+    "#{self.name} (#{self.section.name} $#{self.price})"
   end
 
 end

@@ -33,3 +33,10 @@
 		</tr>
 	<% end %>
 </table>
+
+<h2><%= @menu.name %> Sections</h2>
+<% @menu.sections.each do |section| %>
+	<h3><%= section.name %></h3>
+<% end %>
+
+

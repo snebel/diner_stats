@@ -20,6 +20,7 @@ class MealsController < ApplicationController
     @revenue = revenue(@meals)
     @avg_price = (@revenue / @meals.count).round(2)
     @avg_customer_price = (@revenue / @diners).round(2)
+    @menu = @restaurant.menus.last
   end
 
   private

@@ -17,6 +17,8 @@ class MenuItemsController < ApplicationController
     @meals = @item.meals.uniq
     @table_percent = @item.table_percent
     @item_percent = @item.item_percent
+    item_revenue = @item.item_revenue
+    @rev_share = (item_revenue / revenue(@item.section.menu.meals) * 100).round(2)
   end
 
   private
