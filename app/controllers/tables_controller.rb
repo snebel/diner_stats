@@ -10,6 +10,7 @@ class TablesController < ApplicationController
   end
 
   def index
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @tables = @restaurant.tables
   end
 

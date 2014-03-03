@@ -5,21 +5,19 @@ class Restaurant < ActiveRecord::Base
   has_many :meals, through: :tables
 
   def total_diners
-  	self.meals.map{|meal| meal.diners}.reduce(:+)
+  	meals.map{|meal| meal.diners}.reduce(:+)
   end
 
   def avg_duration
-  	meals = self.meals
   	total_minutes = meals.map{|meal| meal.duration / 60}.reduce(:+)
-  	num_meals = meals.count
-  	(total_minutes.to_f / num_meals).round(1)
+  	(total_minutes.to_f / meals.count).round(1)
   end
 
   def revenue
-  	self.meals.inject(0) {|sum, meal| sum += meal.price}.round(2)
+  	meals.inject(0) {|sum, meal| sum += meal.price}.round(2)
   end
 
   def avg_customer_price
-  		
+
   end
 end

@@ -20,4 +20,5 @@
   <%= submit_tag 'add table' %>
 <% end %>
 
+<h2><%= link_to 'Manage Tables', restaurant_tables_manage_path(@restaurant.id) %></h2>
 <h2><%= link_to 'Meals/Stats', restaurant_meals_path(@restaurant.id) %></h2>
