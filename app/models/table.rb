@@ -17,12 +17,14 @@ class Table < ActiveRecord::Base
   end
 
   def avg_customer_price
+    return 0 if total_diners == 0
   	(total_price / total_diners).round(2)
   end
 
   def avg_meal_time
   	total_time = meals.inject(0) {|sum, meal| sum += meal.duration/60.0}
-  	(total_time / meals.count).round(1)
+  	return 0 if total_time == 0
+    (total_time / meals.count).round(1)
   end
 
   def avg_seats

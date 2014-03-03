@@ -13,7 +13,7 @@ $('.create-meal').on('click', function(e){
     success: function(data){
       $(table).css('background-color', 'red');
       $(table).children('.end-meal').attr('id', data.id);
-      $('<h5>0</h5>').appendTo('div#' + table.id);
+      $(table).children('h5').html('0');
     },
     fail: function(data){
       console.log('seating failed')

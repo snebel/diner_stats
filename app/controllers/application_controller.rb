@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   end	
 
   def total_diners(meals)
+    return 0 if meals.empty?
   	meals.map{|meal| meal.diners}.reduce(:+)
   end
 
