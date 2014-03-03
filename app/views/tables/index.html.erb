@@ -11,7 +11,7 @@
 	</tr>
 	<% @tables.each do |table| %>
 		<tr>
-			<td><%= table.id %></td>
+			<td><%= link_to table.id, table_path(table.id) %></td>
 			<td><%= table.max_seats %></td>
 			<td><%= table.meals.count %></td>
 			<td>$<%= table.avg_price %></td>

@@ -14,6 +14,15 @@ class TablesController < ApplicationController
     @tables = @restaurant.tables
   end
 
+  def show
+    @table = Table.find(params[:id])
+    @meals = @table.meals
+    @avg_seats = @table.avg_seats
+    @avg_duration = avg_duration(@meals)
+    @avg_price = avg_price(@meals)
+    @avg_customer_price = avg_customer_price(@meals)
+  end
+
   private
   def table_params
     params.permit(:max_seats, :restaurant_id)
