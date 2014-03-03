@@ -2,7 +2,13 @@
 .table {
   width: 150px;
   height: 150px;
-  background-color: lightgreen;
+  /*background-color: lightgreen;*/
   display: inline-block;  
   position: absolute;
+  border: 1px solid grey;
+}
+
+form {
+  margin-top: 15px;
+  margin-bottom: 10px;
 }

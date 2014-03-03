@@ -17,6 +17,8 @@
 <%= form_tag "/restaurants/#{@restaurant.id}/tables", method: 'post' do %>
   <%= label_tag :max_seats, 'seats' %>
   <%= select_tag(:max_seats, options_for_select([1,2,3,4])) %>
+  <%= label_tag :number %>
+  <%= text_field_tag :number, nil, placeholder: 'table number' %>
   <%= submit_tag 'add table' %>
 <% end %>
 

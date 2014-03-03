@@ -1,4 +1,4 @@
-<h1>Table <%= "#{@table.id} at #{@table.restaurant.name} (#{@table.max_seats} seats)" %></h1>
+<h1>Table <%= @table.number %> at <%= link_to @table.restaurant.name, restaurant_path(@table.restaurant) %> <%= "(#{@table.max_seats} seats)" %></h1>
 
 <h3>Average Seats: <%= @avg_seats %></h3>
 <h3>Average Duration: <%= @avg_duration %> minutes</h3>
@@ -13,7 +13,6 @@
 		<th>Menu Items</th>
 		<th>Price ($)</th>
 		<th>Minutes</th>
-		<th>Table ID</th>
 	</tr>
 	<% @meals.each do |meal| %>
 		<tr>
@@ -26,7 +25,6 @@
 			</td>
 			<td><%= meal.price %></td>
 			<td><%= (meal.duration / 60.0).round(2) %></td>
-			<td><%= meal.table_id %></td>
 		</tr>
 	<% end %>
 </table>

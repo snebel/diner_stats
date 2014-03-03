@@ -80,7 +80,10 @@ function makeDraggable(draggable){
   }
 }
 
-var button = $('<button>').text('save').attr('id', 'save')
+var button = $('<button>').text('save')
+  .attr('id', 'save')
+  .attr('class', 'btn btn-sm btn-warning')
+  .css('margin-left', '7px');
 //configure seatss
 $('#configure-seats').on('click', function(e){
   e.preventDefault();

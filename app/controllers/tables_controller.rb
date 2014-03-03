@@ -31,6 +31,6 @@ class TablesController < ApplicationController
 
   private
   def table_params
-    params.permit(:max_seats, :restaurant_id)
+    params.permit(:max_seats, :restaurant_id, :number)
   end
 end

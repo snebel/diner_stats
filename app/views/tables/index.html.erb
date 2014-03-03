@@ -2,7 +2,7 @@
 
 <table border='1px'>
 	<tr>
-		<th>ID</th>
+		<th>Num</th>
 		<th>Seats</th>
 		<th># Meals</th>
 		<th>Price/Meal</th>
@@ -11,7 +11,7 @@
 	</tr>
 	<% @tables.each do |table| %>
 		<tr>
-			<td><%= link_to table.id, table_path(table.id) %></td>
+			<td><%= link_to table.number, table_path(table.id) %></td>
 			<td><%= table.max_seats %></td>
 			<td><%= table.meals.count %></td>
 			<td>$<%= table.avg_price %></td>

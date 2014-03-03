@@ -16,7 +16,7 @@
 		<th>Menu Items</th>
 		<th>Price ($)</th>
 		<th>Minutes</th>
-		<th>Table ID</th>
+		<th>Table</th>
 	</tr>
 	<% @meals.each do |meal| %>
 		<tr>
@@ -29,7 +29,7 @@
 			</td>
 			<td><%= meal.price %></td>
 			<td><%= (meal.duration / 60.0).round(2) %></td>
-			<td><%= meal.table_id %></td>
+			<td><%= meal.table.number %></td>
 		</tr>
 	<% end %>
 </table>
