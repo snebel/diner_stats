@@ -5,7 +5,7 @@
 
 
 <% @tables.each do |table| %>
-  <div class='table' id='<%= table.id %>' style="left: <%= "#{table.left || 0}px"  %>; top: <%= "#{table.top || 0}px" %>; position: absolute;">
+  <div class='table' id='<%= table.id %>' style="left: <%= "#{table.left || 0}px"  %>; top: <%= "#{table.top || 150}px" %>;">
     <%= select_tag(:diners, options_for_select(Array(1..table.max_seats).reverse)) %>
     <%= button_tag 'seat', class: 'create-meal' %>
     <%= select_tag(
