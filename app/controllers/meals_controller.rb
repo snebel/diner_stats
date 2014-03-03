@@ -12,7 +12,7 @@ class MealsController < ApplicationController
     render :json => meal  
   end
 
-  def index
+  def index 
     @restaurant = Restaurant.find(params[:restaurant_id])
     @meals = @restaurant.meals
     @diners = total_diners(@meals)
@@ -21,6 +21,13 @@ class MealsController < ApplicationController
     @avg_price = (@revenue / @meals.count).round(2)
     @avg_customer_price = (@revenue / @diners).round(2)
     @menu = @restaurant.menus.last
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: item_revenue_data(@restaurant.menu_items, @revenue)
+      end
+    end
   end
 
   private

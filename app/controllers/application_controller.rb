@@ -32,4 +32,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def item_revenue_data(items, revenue)
+    items.map do |item|
+      num = item.meal_memberships.count
+      freq = num * item.price / revenue
+      {letter: item.name, frequency: freq}
+    end
+  end
+
 end
