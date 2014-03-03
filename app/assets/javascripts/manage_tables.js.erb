@@ -3,17 +3,18 @@
 var restaurant_id = $('h1')[0].id
 $('.create-meal').on('click', function(e){
   e.preventDefault();
-  var table = $(e.target).parent()[0];
-  var diners = $(table).children('#diners')[0].value;
+  table = $(e.target).parent().parent();
+  diners = table.children('form').children('#diners').val();
   $.ajax({
     method: 'post',
-    url: '/tables/' + table.id +'/meals',
+    url: '/tables/' + table.attr('id') +'/meals',
     dataType: 'json',
     data: {restaurant_id: restaurant_id, diners: diners},
     success: function(data){
-      $(table).css('background-color', 'red');
-      $(table).children('.end-meal').attr('id', data.id);
-      $(table).children('h5').html('0');
+      console.log(data);
+      table.css('background-color', 'red');
+      table.children('.end-meal').attr('id', data.id);
+      table.children('h5').html('0');
     },
     fail: function(data){
       console.log('seating failed')
@@ -67,9 +68,7 @@ $('.add-item').on('click', function(e){
 })
 
 var draggable = false;
-// $(function() {
-//   $( ".table" ).draggable();
-// });
+
 function makeDraggable(draggable){
   if (draggable) {
     $( ".table" ).draggable();
@@ -84,7 +83,7 @@ var button = $('<button>').text('save')
   .attr('id', 'save')
   .attr('class', 'btn btn-sm btn-warning')
   .css('margin-left', '7px');
-//configure seatss
+//configure seats
 $('#configure-seats').on('click', function(e){
   e.preventDefault();
   draggable = !draggable
