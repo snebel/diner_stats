@@ -40,7 +40,7 @@ $('.end-meal').on('click', function(e){
     success: function(data){
       $('#'+table_id+' .edit-meal').hide();
       $('#'+table_id+' .seat-table').show();
-      $('#'+table_id+' .edit-meal').children('h5').text(0);
+      $('#'+table_id+' .edit-meal').children('h5').text('Total: $0');
       // $table.css('background-color', 'lightgreen');
     },
     error: function(data){
@@ -68,9 +68,11 @@ $('.add-item').on('click', function(e){
       success: function(data){
         $('input:checked').removeAttr('checked');
         // update price of meal
-        var header = $table.children('h5');
-        var price = parseFloat(header.text());
-        header.text(price + data);
+        header = $table.children('h5');
+        // var price = parseFloat(header.text());
+        var value = parseFloat(header.attr('value'));
+        header.attr('value', value + data);
+        header.text('Total: $'+header.attr('value'));
       },
       error: function(data){
         console.log('adding item failed');
