@@ -1,6 +1,7 @@
 var rows, svg;
 var items_url = '/restaurants/' + $('#restaurant').attr('data') + '/meals'
 var sections_url = '/menus/' + $('#menu').attr('data') + '/sections'
+var tables_url = '/restaurants/' + $('#restaurant').attr('data') + '/tables'
 
  // = [
  //  {letter: 'letter', frequency: 'frequency'},
@@ -70,7 +71,7 @@ function render(data){
 }
 
 // d3.select("input").on("change", change(rows));
-$('#box').on('change', function(){change(rows)})
+
 // var sortTimeout = setTimeout(function() {
 //   d3.select("input").property("checked", true).each(change(rows));
 // }, 2000);
@@ -100,7 +101,6 @@ function change(data) {
 }
 
 function fetch(url){
-
   $.ajax({
     method: 'get',
     url: url,
@@ -112,9 +112,15 @@ function fetch(url){
   });
 }
 
+$('#box').on('change', function(){change(rows)});
+$('#radio-form').on('change', function(e){
+  if (e.target.id === 'restaurant'){fetch(items_url);}
+  else if (e.target.id === 'menu'){fetch(sections_url);}
+  else if (e.target.id === 'tables'){fetch(tables_url);}
+});
+
 $(function() {
-  // fetch(items_url);
-  fetch(sections_url);
+  fetch(items_url);
 });
 
 

@@ -54,4 +54,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def table_rev(table)
+    table.meals.inject(0) {|sum, meal| sum += meal.price}
+  end
+
+  def table_revenue_data(tables, revenue)
+    tables.map do |table|
+      total_rev = table_rev(table)
+      rev_share = (total_rev / revenue).round(2)
+      {letter: table.number, frequency: rev_share}
+    end
+  end
+
 end

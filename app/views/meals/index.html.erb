@@ -32,13 +32,15 @@
 	<% end %>
 </table>
 
-<form action="">
-	<input type="radio" id='restaurant' data='<%= @restaurant.id %>' checked> Menu Items 
-	<input type="radio" id='menu' data='<%= @menu.id %>'> Sections
+<h2>Revenue Breakdown Charts</h2>
+
+<form id='radio-form'>
+	<input type="radio" name='mode' id='restaurant' data='<%= @restaurant.id %>' checked> Menu Items
+	<input type="radio" name='mode' id='menu' data='<%= @menu.id %>'> Menu Sections
+	<input type="radio" name='mode' id='tables' data='<%= @menu.id %>'> Tables
 </form>
 
 <label><input type="checkbox" id='box'> Sort values</label>
-
 
 <%= javascript_include_tag 'bar_graph' %>
 

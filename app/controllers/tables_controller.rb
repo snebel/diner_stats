@@ -12,6 +12,13 @@ class TablesController < ApplicationController
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
     @tables = @restaurant.tables
+    revenue = revenue(@restaurant.meals)
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: table_revenue_data(@tables, revenue)
+      end
+    end
   end
 
   def show
