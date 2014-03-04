@@ -6,7 +6,7 @@ var rows;
 // ]
 
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
+var margin = {top: 40, right: 20, bottom: 50, left: 80},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -73,22 +73,18 @@ $('input').on('change', function(){change(rows)})
 // }, 2000);
 
 function change(data) {
-
-  console.log('changing');
-  console.log(this.checked);
   // clearTimeout(sortTimeout);
-
+  
   // Copy-on-write since tweens are evaluated after a delay.
   // not sure what the conditional here is doing...
-  var x0 = x.domain(data.sort(this.checked
+  var x0 = x.domain(data.sort($('#box').prop('checked')
       ? function(a, b) { return b.frequency - a.frequency; }
       : function(a, b) { return d3.ascending(a.letter, b.letter); }
       )
       .map(function(d) { return d.letter; }))
       .copy();
-
-  var transition = svg.transition().duration(750),
-      delay = function(d, i) { return i * 50; };
+  var transition = svg.transition().duration(1200),
+    delay = function(d, i) { return i * 50; };
 
   transition.selectAll(".bar")
     .delay(delay)
@@ -100,19 +96,20 @@ function change(data) {
     .delay(delay);
 }
 
-
 function fetch(){
   $.ajax({
     method: 'get',
     url: '/restaurants/' + $('h1').attr('id') + '/meals',
     dataType: 'json',
     success: function(data){
-      console.log(data);
       rows = data;
       render(data);
     }
   });
 }
-fetch();
-render(rows);
+
+$(function() {
+  fetch();
+});
+
 

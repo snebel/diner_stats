@@ -1,43 +1,7 @@
-<style>
 
-body {
+<h1 id='<%= @restaurant.id %>'>All Meals at <%= link_to @restaurant.name, restaurant_path(@restaurant.id) %></h1>
 
-}
-
-.axis text {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.bar {
-  fill: steelblue;
-  fill-opacity: .9;
-}
-
-.x.axis path {
-  display: none;
-}
-
-label {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-</style>
-
-<h1 id='<%= @restaurant.id %>'>All Meals at <%= @restaurant.name %></h1>
-
-
-<h3>Total Meals: <%= @meals.count %> </h3>
 <h3>Total Revenue: $<%= @revenue %> </h3>
-<h3>Total Customers: <%= @diners %> (<%= (@diners.to_f / @meals.count).round(1) %> customers/meal)</h3>
 
 <h3>Average Duration: <%= @avg_duration %> minutes</h3>
 <h3>Average Meal Price: $<%= @avg_price %></h3>	
@@ -68,7 +32,7 @@ label {
 	<% end %>
 </table>
 
-<label><input type="checkbox"> Sort values</label>
+<label><input type="checkbox" id='box'> Sort values</label>
 
 <%= javascript_include_tag 'd3' %>
 <%= javascript_include_tag 'bar_graph' %>
