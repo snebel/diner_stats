@@ -6,6 +6,7 @@
   display: inline-block;  
   position: absolute;
   border: 1px solid grey;
+  text-align: center;
 }
 
 form {
@@ -13,6 +14,9 @@ form {
   margin-bottom: 10px;
 }
 
+.edit-meal {
+  display: none;
+}
 
 .axis text {
   font: 16px sans-serif;

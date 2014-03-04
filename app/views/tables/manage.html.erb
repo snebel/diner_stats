@@ -9,20 +9,23 @@
     <% @tables.each do |table| %>
       <div class='table container' id='<%= table.id %>' style="left: <%= "#{table.left || 0}px"  %>; top: <%= "#{table.top || 150}px" %>;">
         Table <%= table.number %>
-        <form>
+        <form class='seat-table'>
           <%= select_tag(:diners, options_for_select(Array(1..table.max_seats).reverse)) %>
 
           <%= button_tag 'seat', class: 'create-meal btn btn-primary btn-xs' %>
         </form>
 
+        <form class='edit-meal'>
+          <%= button_tag 'add items', class: 'add-item btn btn-xs btn-success' %>
+          <h5>0</h5>
+          <%= button_tag 'end meal', class: 'end-meal btn btn-xs btn-primary' %>
+          
+        </form>
 
-
-        <%= button_tag 'add items', class: 'add-item btn btn-xs btn-success' %>
-        <%= button_tag 'end meal', class: 'end-meal btn btn-xs btn-primary' %>
-        <h5>-</h5>
       </div>
     <% end %>
   </div>
+
   <div class='col-md-2' style='border: 1px solid grey'>
     <h2>Menu</h2>
     <form id='menu-items'>
