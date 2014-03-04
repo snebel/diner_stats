@@ -3,7 +3,7 @@ var restaurant_id = $('h1')[0].id
 // ajax for seating a table/creating a meal
 $('.create-meal-li').on('click', function(e){
   e.preventDefault();
-  var $table = $(e.target).parents('.table');
+  var $table = $(e.target).parents('.table-div');
   var table_id = $table.attr('id');
   var diners = $(e.target).parent().text();
   
@@ -89,7 +89,7 @@ var draggable = false;
 
 function makeDraggable(draggable){
   if (draggable) {
-    $( ".table" ).draggable();
+    $( ".table-div" ).draggable();
   }
   else {
     $('.draggable').draggable({cancel : 'div'});
@@ -98,7 +98,7 @@ function makeDraggable(draggable){
 
 var button = $('<button>').text('save')
   .attr('id', 'save')
-  .attr('class', 'btn btn-xs btn-primary')
+  .attr('class', 'btn btn-xs btn-info')
   .css('margin-left', '7px');
 //configure seats
 $('#configure-seats').on('click', function(e){
@@ -129,7 +129,7 @@ $('#configure-seats').on('click', function(e){
 
 function tablePositions(){
   var table_data = [];
-  $('.table').each(function(idx, e){
+  $('.table-div').each(function(idx, e){
     var id = $(e).attr('id');
     var left = $(e).css('left').replace(/[^-\d\.]/g, '');
     var top = $(e).css('top').replace(/[^-\d\.]/g, '');

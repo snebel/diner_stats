@@ -12,3 +12,12 @@
  *= require_tree .
  *= require bootstrap.min
  */
+
+h1 {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.panel-heading {
+  font-size: 16px;
+}

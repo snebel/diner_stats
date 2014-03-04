@@ -4,7 +4,7 @@
     <h1 id='<%= @restaurant.id %>'><%= link_to @restaurant.name, restaurant_path(@restaurant) %> Tables</h1>
 
     <form id='configure'>
-      <%= button_tag 'Arrange Tables', id: 'configure-seats', class: 'btn btn-primary btn-xs' %>
+      <%= button_tag 'Arrange Tables', id: 'configure-seats', class: 'btn btn-info btn-xs' %>
     </form>
 </div>
 
@@ -23,7 +23,7 @@
 
   <div class='col-md-10'>
     <% @tables.each do |table| %>
-      <div class='table container' id='<%= table.id %>' style="left: <%= "#{table.left || 0}px"  %>; top: <%= "#{table.top || 150}px" %>;">
+      <div class='table-div container' id='<%= table.id %>' style="left: <%= "#{table.left || 0}px"  %>; top: <%= "#{table.top || 150}px" %>;">
         
         <h6>Table <%= table.number %></h6>
 

@@ -1,8 +1,8 @@
+
 var rows, svg;
 var items_url = '/restaurants/' + $('#restaurant').attr('data') + '/meals'
 var sections_url = '/menus/' + $('#menu').attr('data') + '/sections'
 var tables_url = '/restaurants/' + $('#restaurant').attr('data') + '/tables'
-
  // = [
  //  {letter: 'letter', frequency: 'frequency'},
  //  {letter: 'B', frequency: 0.085},
@@ -58,7 +58,7 @@ function render(data){
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Revenue %");
+      .text("% of Revenue");
 
   svg.selectAll(".bar")
     .data(data)
@@ -114,6 +114,7 @@ function fetch(url){
 
 $('#box').on('change', function(){change(rows)});
 $('#radio-form').on('change', function(e){
+  $('#box').removeAttr('checked');
   if (e.target.id === 'restaurant'){fetch(items_url);}
   else if (e.target.id === 'menu'){fetch(sections_url);}
   else if (e.target.id === 'tables'){fetch(tables_url);}
