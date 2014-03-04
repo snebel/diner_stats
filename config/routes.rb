@@ -9,6 +9,8 @@ DinerStats::Application.routes.draw do
     end   
   end
 
+  
+
   resources :menus, only: [:show] do
     resources :sections, only: [:edit, :index]
   end

@@ -2,29 +2,38 @@
 
 <h1 id='<%= @restaurant.id %>'><%= link_to @restaurant.name, restaurant_path(@restaurant) %> Tables</h1>
 
-
-
-<% @tables.each do |table| %>
-  <div class='table container' id='<%= table.id %>' style="left: <%= "#{table.left || 0}px"  %>; top: <%= "#{table.top || 150}px" %>;">
-    <%= table.number %>
-    <form>
-      <%= select_tag(:diners, options_for_select(Array(1..table.max_seats).reverse)) %>
-
-      <%= button_tag 'seat', class: 'create-meal btn btn-primary btn-xs' %>
-    </form>
-
-    <%= select_tag(
-      :menu_item, 
-      options_for_select(@restaurant.menu_items.map{|item| ["#{item.name} $#{item.price}", item.id]}), class: '')
-    %>
-
-    <%= button_tag 'add item', class: 'add-item btn btn-xs btn-success' %>
-    <%= button_tag 'end meal', class: 'end-meal btn btn-xs btn-primary' %>
-    <h5>-</h5>
-  </div>
-<% end %>
-
 <form id='configure'><%= button_tag 'configure tables', id: 'configure-seats', class: 'btn btn-warning btn-sm' %></form>
+
+<div class="row">
+  <div class='col-md-10'>
+    <% @tables.each do |table| %>
+      <div class='table container' id='<%= table.id %>' style="left: <%= "#{table.left || 0}px"  %>; top: <%= "#{table.top || 150}px" %>;">
+        Table <%= table.number %>
+        <form>
+          <%= select_tag(:diners, options_for_select(Array(1..table.max_seats).reverse)) %>
+
+          <%= button_tag 'seat', class: 'create-meal btn btn-primary btn-xs' %>
+        </form>
+
+
+
+        <%= button_tag 'add items', class: 'add-item btn btn-xs btn-success' %>
+        <%= button_tag 'end meal', class: 'end-meal btn btn-xs btn-primary' %>
+        <h5>-</h5>
+      </div>
+    <% end %>
+  </div>
+  <div class='col-md-2' style='border: 1px solid grey'>
+    <h2>Menu</h2>
+    <form id='menu-items'>
+    <% @restaurant.menu_items.each do |item| %>
+      <input type='checkbox' value='<%= item.id %>'> <%= "#{item.name[0..9]} $#{item.price}" %></br>
+    <% end %>
+    </form>
+    </ul>
+  </div>
+
+</div>
 
 <%= javascript_include_tag '//code.jquery.com/ui/1.10.4/jquery-ui.js' %>
 <%= javascript_include_tag 'manage_tables' %>
