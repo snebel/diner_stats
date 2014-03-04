@@ -63,3 +63,14 @@ h2 {
 #radio-form {
   text-align: center;
 }
+
+.stats {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.close {
+  margin-right: 15px;
+  margin-top: 10px;
+}
+

@@ -10,8 +10,7 @@ $('.modal-link').on('click', function(e){
     success: function(data){
       // console.log(data);
       a = $(data);
-      $('.modal-title').append(a.children('h1'))
-      $('#menu-item-show').append(a.children('table'));
+      $('#menu-item-show').append(a.children());
     },
     fail: function(error){
       console.log(err0r);
