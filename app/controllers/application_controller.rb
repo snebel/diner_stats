@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     items.map do |item|
       num = item.meal_memberships.count
       freq = num * item.price / revenue
-      {letter: item.name[0..2], frequency: freq}
+      {letter: item.name[0..3], frequency: freq}
     end
   end
 

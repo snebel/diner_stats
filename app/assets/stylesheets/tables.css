@@ -1,12 +1,22 @@
 
+body {
+/*  background-color: rgba(174, 167, 159, 0.7) /*#aea79f*/;
+}
+
+.header {
+  display: inline-block;
+}
+
 .table {
+  background-color: white /*#efb73e*/;
   width: 150px;
   height: 140px;
   /*background-color: lightgreen;*/
   display: inline-block;  
   position: absolute;
-  border: 1px solid grey;
+  border: 1px solid #efb73e;
   text-align: center;
+  border-radius: 10px;
 }
 
 form {

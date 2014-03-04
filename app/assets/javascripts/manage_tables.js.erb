@@ -1,11 +1,11 @@
+var restaurant_id = $('h1')[0].id
 
 // ajax for seating a table/creating a meal
-var restaurant_id = $('h1')[0].id
-$('.create-meal').on('click', function(e){
+$('.create-meal-li').on('click', function(e){
   e.preventDefault();
-  table = $(e.target).parent().parent();
+  table = $(e.target).parents('.table');
   var table_id = table.attr('id');
-  var diners = table.children('form').children('#diners').val();
+  diners = $(e.target).parent().text();
   
   $.ajax({
     method: 'post',
@@ -33,7 +33,7 @@ $('.end-meal').on('click', function(e){
   var $table = $form.parent();
   var table_id = $table.attr('id');
   var price = $form.children('h5').attr('value');
-  
+
   $.ajax({
     method: 'put',
     url: '/tables/' + table_id + '/meals/' + e.target.id,
@@ -71,7 +71,6 @@ $('.add-item').on('click', function(e){
         $('input:checked').removeAttr('checked');
         // update price of meal
         header = $table.children('h5');
-        // var price = parseFloat(header.text());
         var value = parseFloat(header.attr('value'));
         header.attr('value', value + data);
         header.text('Total: $'+header.attr('value'));
@@ -96,7 +95,7 @@ function makeDraggable(draggable){
 
 var button = $('<button>').text('save')
   .attr('id', 'save')
-  .attr('class', 'btn btn-sm btn-warning')
+  .attr('class', 'btn btn-xs btn-primary')
   .css('margin-left', '7px');
 //configure seats
 $('#configure-seats').on('click', function(e){

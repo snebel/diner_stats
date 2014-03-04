@@ -1,38 +1,54 @@
 <%= stylesheet_link_tag 'tables' %>
 
-<h1 id='<%= @restaurant.id %>'><%= link_to @restaurant.name, restaurant_path(@restaurant) %> Tables</h1>
+<div id='header'>
+    <h1 id='<%= @restaurant.id %>'><%= link_to @restaurant.name, restaurant_path(@restaurant) %> Tables</h1>
 
-<form id='configure'><%= button_tag 'configure tables', id: 'configure-seats', class: 'btn btn-warning btn-sm' %></form>
+    <form id='configure'>
+      <%= button_tag 'Arrange Tables', id: 'configure-seats', class: 'btn btn-primary btn-xs' %>
+    </form>
+</div>
 
 <div class="row">
-  <div class='col-md-10'>
-    <% @tables.each do |table| %>
-      <div class='table container' id='<%= table.id %>' style="left: <%= "#{table.left || 0}px"  %>; top: <%= "#{table.top || 150}px" %>;">
-        Table <%= table.number %>
-        <form class='seat-table'>
-          <%= select_tag(:diners, options_for_select(Array(1..table.max_seats).reverse)) %></br>
-
-          <%= button_tag 'Seat Table', class: 'create-meal btn btn-primary btn-sm' %>
-        </form>
-
-        <form class='edit-meal'>
-          <%= button_tag 'Add Items', class: 'add-item btn btn-sm btn-success' %>
-          <h5 value=0>Total: $0</h5>
-          <%= button_tag 'end', class: 'end-meal btn btn-xs btn-primary' %> 
-        </form>
-
-      </div>
-    <% end %>
-  </div>
-
   <div class='col-md-2' style='border: 1px solid grey'>
     <h2>Menu</h2>
     <form id='menu-items'>
     <% @restaurant.menu_items.each do |item| %>
-      <input type='checkbox' value='<%= item.id %>'> <%= "#{item.name[0..9]} $#{item.price}" %></br>
+      <div class='checkbox'>
+        <input type='checkbox' value='<%= item.id %>'> <%= "#{item.name[0..9]} $#{item.price}" %></input>  
+      </div>
     <% end %>
     </form>
     </ul>
+  </div>
+
+  <div class='col-md-10'>
+    <% @tables.each do |table| %>
+      <div class='table container' id='<%= table.id %>' style="left: <%= "#{table.left || 0}px"  %>; top: <%= "#{table.top || 150}px" %>;">
+        
+        <h6>Table <%= table.number %></h6>
+
+        <form class='seat-table'>
+
+          <div class='btn-group'>
+            <button type="button" class="create-meal btn btn-warning dropdown-toggle" data-toggle='dropdown'>Seat Table <span class='caret'></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <% table.max_seats.downto(1) do |n| %>
+                <li class='create-meal-li'><a><%= n %></a></li>
+              <% end %>
+            </ul>
+          </div>
+
+        </form>
+
+        <form class='edit-meal'>
+          <h5 value=0>Total: $0</h5>
+          <%= button_tag 'Add Items', class: 'add-item btn btn-sm btn-info' %>
+          <%= button_tag 'End Meal', class: 'end-meal btn btn-sm btn-warning' %> 
+        </form>
+
+      </div>
+    <% end %>
   </div>
 
 </div>
