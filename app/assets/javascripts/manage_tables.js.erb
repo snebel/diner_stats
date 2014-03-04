@@ -29,14 +29,16 @@ $('.create-meal').on('click', function(e){
 //ajax for ending a meal
 $('.end-meal').on('click', function(e){
   e.preventDefault();
-  var $table = $(e.target).parent().parent() //$($(e.target).parent()[0]);
-  var table_id = $table.attr('id')
-  var $price = $table.children('h5')
+  var $form = $(e.target).parent();
+  var $table = $form.parent();
+  var table_id = $table.attr('id');
+  var price = $form.children('h5').attr('value');
+  
   $.ajax({
     method: 'put',
     url: '/tables/' + table_id + '/meals/' + e.target.id,
     dataType: 'json',
-    data: {price: $price.text()},
+    data: {price: price},
     success: function(data){
       $('#'+table_id+' .edit-meal').hide();
       $('#'+table_id+' .seat-table').show();

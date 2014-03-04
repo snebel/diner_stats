@@ -6,6 +6,7 @@ class MealsController < ApplicationController
   end
 
   def update
+    binding.pry
     meal = Meal.find(params[:id])
     time = Time.now - meal.created_at
     meal.update(duration: time, price: params[:price])
