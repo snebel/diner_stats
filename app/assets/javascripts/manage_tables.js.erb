@@ -3,8 +3,8 @@ var restaurant_id = $('h1')[0].id
 // ajax for seating a table/creating a meal
 $('.create-meal-li').on('click', function(e){
   e.preventDefault();
-  var table = $(e.target).parents('.table');
-  var table_id = table.attr('id');
+  var $table = $(e.target).parents('.table');
+  var table_id = $table.attr('id');
   var diners = $(e.target).parent().text();
   
   $.ajax({
@@ -13,12 +13,13 @@ $('.create-meal-li').on('click', function(e){
     dataType: 'json',
     data: {restaurant_id: restaurant_id, diners: diners},
     success: function(data){
-      $('#'+table_id+' .seat-table').hide();
-      $('#'+table_id+' .edit-meal').show();
-      table.css('border-color', '#772953');
-      table.children('.edit-meal')
+      $table.children('.seat-table').hide();
+      $table.children('.edit-meal').show();
+      $table.css('border-color', '#772953');
+      $table.children('.edit-meal')
         .children('.end-meal')
         .attr('id', data.id);
+      $table.children('h6').append('<span> ('+diners+' diners)</span>');
     },
     fail: function(data){
       console.log('seating failed')
@@ -30,7 +31,7 @@ $('.create-meal-li').on('click', function(e){
 $('.end-meal').on('click', function(e){
   e.preventDefault();
   var $form = $(e.target).parent();
-  var $table = $form.parent();
+   $table = $form.parent();
   var table_id = $table.attr('id');
   var price = $form.children('h5').attr('value');
 
@@ -40,18 +41,19 @@ $('.end-meal').on('click', function(e){
     dataType: 'json',
     data: {price: price},
     success: function(data){
-      $('#'+table_id+' .edit-meal').hide();
-      $('#'+table_id+' .seat-table').show();
-      $('#'+table_id).css('border-color', '#efb73e')
-      $('#'+table_id+' .edit-meal').children('h5').text('Total: $0');
-      // $table.css('background-color', 'lightgreen');
+      var edit_meal = $table.children('.edit-meal');
+      edit_meal.hide();
+      $table.children('.seat-table').show();
+      $table.css('border-color', '#efb73e')
+      $table.children('h6').children('span').remove();
+      edit_meal.children('h5').text('Total: $0');
     },
     error: function(data){
       console.log(data);
     }
   });
 })
-var table;
+
 //ajax for adding items to a meal
 $('.add-item').on('click', function(e){
   e.preventDefault();
