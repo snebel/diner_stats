@@ -3,9 +3,9 @@ var restaurant_id = $('h1')[0].id
 // ajax for seating a table/creating a meal
 $('.create-meal-li').on('click', function(e){
   e.preventDefault();
-  table = $(e.target).parents('.table');
+  var table = $(e.target).parents('.table');
   var table_id = table.attr('id');
-  diners = $(e.target).parent().text();
+  var diners = $(e.target).parent().text();
   
   $.ajax({
     method: 'post',
@@ -15,7 +15,7 @@ $('.create-meal-li').on('click', function(e){
     success: function(data){
       $('#'+table_id+' .seat-table').hide();
       $('#'+table_id+' .edit-meal').show();
-      // table.css('background-color', 'red');
+      table.css('border-color', '#772953');
       table.children('.edit-meal')
         .children('.end-meal')
         .attr('id', data.id);
@@ -42,6 +42,7 @@ $('.end-meal').on('click', function(e){
     success: function(data){
       $('#'+table_id+' .edit-meal').hide();
       $('#'+table_id+' .seat-table').show();
+      $('#'+table_id).css('border-color', '#efb73e')
       $('#'+table_id+' .edit-meal').children('h5').text('Total: $0');
       // $table.css('background-color', 'lightgreen');
     },

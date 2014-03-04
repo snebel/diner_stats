@@ -1,7 +1,10 @@
 class MealsController < ApplicationController
   def create
     meal = Meal.create(meal_params)
-    meal.update(menu_id: Restaurant.find(params[:restaurant_id]).menus.last.id)
+    meal.update(
+      menu_id: Restaurant.find(params[:restaurant_id]).menus.last.id,
+      duration: 0,
+      price: 0)
     render :json => meal
   end
 
