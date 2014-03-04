@@ -13,5 +13,16 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])  
     @restaurant_id = Menu.find(params[:menu_id]).restaurant_id
   end
+
+  def index
+    menu = Menu.find(params[:menu_id])
+    sections = menu.sections
+    revenue = revenue(menu.meals)
+    respond_to do |format|
+      format.json do
+        render json: section_revenue_data(sections, revenue)
+      end
+    end
+  end
   
 end

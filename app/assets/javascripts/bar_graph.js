@@ -1,10 +1,12 @@
-var rows;
+var rows, svg;
+var items_url = '/restaurants/' + $('#restaurant').attr('data') + '/meals'
+var sections_url = '/menus/' + $('#menu').attr('data') + '/sections'
+
  // = [
- //  // {letter: 'letter', frequency: 'frequency'},
+ //  {letter: 'letter', frequency: 'frequency'},
  //  {letter: 'B', frequency: 0.085},
  //  {letter: 'A', frequency: 0.185}
-// ]
-
+ // ]
 
 var margin = {top: 40, right: 20, bottom: 50, left: 80},
     width = 960 - margin.left - margin.right,
@@ -27,13 +29,14 @@ var yAxis = d3.svg.axis()
     .orient("left")
     .tickFormat(formatPercent);
 
-var svg = d3.select("body").append("svg")
+function render(data){
+  d3.select('svg').remove();
+  svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-function render(data){
   data.forEach(function(d){
     d.frequency = +d.frequency;
   });
@@ -67,7 +70,7 @@ function render(data){
 }
 
 // d3.select("input").on("change", change(rows));
-$('input').on('change', function(){change(rows)})
+$('#box').on('change', function(){change(rows)})
 // var sortTimeout = setTimeout(function() {
 //   d3.select("input").property("checked", true).each(change(rows));
 // }, 2000);
@@ -96,10 +99,11 @@ function change(data) {
     .delay(delay);
 }
 
-function fetch(){
+function fetch(url){
+
   $.ajax({
     method: 'get',
-    url: '/restaurants/' + $('h1').attr('id') + '/meals',
+    url: url,
     dataType: 'json',
     success: function(data){
       rows = data;
@@ -109,7 +113,8 @@ function fetch(){
 }
 
 $(function() {
-  fetch();
+  // fetch(items_url);
+  fetch(sections_url);
 });
 
 

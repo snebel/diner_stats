@@ -1,4 +1,4 @@
-
+<%= javascript_include_tag 'd3' %>
 <h1 id='<%= @restaurant.id %>'>All Meals at <%= link_to @restaurant.name, restaurant_path(@restaurant.id) %></h1>
 
 <h3>Total Revenue: $<%= @revenue %> </h3>
@@ -32,9 +32,14 @@
 	<% end %>
 </table>
 
+<form action="">
+	<input type="radio" id='restaurant' data='<%= @restaurant.id %>' checked> Menu Items 
+	<input type="radio" id='menu' data='<%= @menu.id %>'> Sections
+</form>
+
 <label><input type="checkbox" id='box'> Sort values</label>
 
-<%= javascript_include_tag 'd3' %>
+
 <%= javascript_include_tag 'bar_graph' %>
 
 
