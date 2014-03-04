@@ -54,3 +54,12 @@ label {
   position: relative;
   top: 30px;
 }
+
+h2 {
+  text-align: center;
+  padding-top: 10px;
+}
+
+#radio-form {
+  text-align: center;
+}

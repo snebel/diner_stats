@@ -44,7 +44,8 @@
 					<td>$<%= meal.price %></td>
 					<td>
 						<% meal.menu_items.each do |item| %>
-							<%= link_to item.name, menu_item_path(item.id) %>
+							<!-- <%= link_to item.name, menu_item_path(item.id) %> -->
+							<a class='modal-link' href='' id='<%= item.id %>' data-toggle="modal" data-target="#myModal"><%= item.name %></a>
 						<% end %>
 					</td>
 					<td><%= (meal.duration / 60.0).round(2) %> mins</td>
@@ -56,11 +57,7 @@
 	</table>
 </div>
 
-
-
-
-
-<h2>Revenue Breakdown Charts</h2>
+<h2>Revenue Breakdown Graph</h2>
 
 <form id='radio-form'>
 	<input type="radio" name='mode' id='restaurant' data='<%= @restaurant.id %>' checked> Menu Items
@@ -68,9 +65,26 @@
 	<input type="radio" name='mode' id='tables' data='<%= @menu.id %>'> Tables
 </form>
 
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div id='menu-item-show' class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <label><input type="checkbox" id='box'> Sort values</label>
 
 <%= javascript_include_tag 'd3' %>
+<%= javascript_include_tag 'modal_render' %>
 <%= javascript_include_tag 'bar_graph' %>
 
 
