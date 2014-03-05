@@ -4,11 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   def avg_duration(meals)
+    return 0 if meals.empty?
   	total_minutes = meals.map{|meal| meal.duration / 60.0}.reduce(:+)
   	(total_minutes.to_f / meals.count).round(1)
   end
 
   def revenue(meals)
+    return 0 if meals.empty?
   	meals.inject(0) {|sum, meal| sum += meal.price}.round(2)
   end
 

@@ -21,8 +21,8 @@ class MealsController < ApplicationController
     @diners = total_diners(@meals)
     @avg_duration = avg_duration(@meals)
     @revenue = revenue(@meals)
-    @avg_price = (@revenue / @meals.count).round(2)
-    @avg_customer_price = (@revenue / @diners).round(2)
+    @avg_price = (@revenue / @meals.count).round(2) unless @meals.count == 0
+    @avg_customer_price = (@revenue / @diners).round(2) unless @diner == 0
     @menu = @restaurant.menus.last
 
     respond_to do |format|
