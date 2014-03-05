@@ -6,10 +6,10 @@
 	<table class='table'>
 		<thead>
 			<tr>
-				<th><b>Total Revenue</b></th>
-				<th><b>Avg. Meal Cost</b></th>
-				<th><b>Avg. Cost per Customer</b></th>
-				<th><b>Avg. Meal Time</b></th>
+				<th><h4>Total Revenue</h4></th>
+				<th><h4>Avg. Meal Cost</h4></th>
+				<th><h4>Avg. Cost per Customer</h4></th>
+				<th><h4>Avg. Meal Time</h4></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,35 +26,10 @@
 
 <div class='panel panel-default'>
 	<div class='panel-heading' style='text-align:center;'><b>All Meals Served</b></div>
-	<table class='table table-hover table-condensed'>
-		<thead>
-			<tr>
-				<th>Date</th>
-				<th>Total Price</th>
-				<th>Menu Items</th>
-				<th>Duration</th>
-				<th>Diners</th>
-				<th>Table</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @meals.each do |meal| %>
-				<tr>
-					<td><%= meal.created_at.httpdate %></td>
-					<td>$<%= meal.price %></td>
-					<td>
-						<% meal.menu_items.each do |item| %>
-							<!-- <%= link_to item.name, menu_item_path(item.id) %> -->
-							<a class='modal-link' href='' id='<%= item.id %>' data-toggle="modal" data-target="#myModal"><%= item.name %></a>
-						<% end %>
-					</td>
-					<td><%= (meal.duration / 60.0).round(2) %> mins</td>
-					<td><%= meal.diners %></td>
-					<td><%= link_to meal.table.number, table_path(meal.table.id) %></td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
+
+	<%= render partial: "shared/meals_table" %>
+
+
 </div>
 
 <h2>Revenue Breakdown Graph</h2>
@@ -65,17 +40,9 @@
 	<input type="radio" name='mode' id='tables' data='<%= @menu.id %>'> Tables
 </form>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div id='menu-item-show' class="modal-body">
-      </div>
-    </div>
-  </div>
-</div>
-
 <label><input type="checkbox" id='box'> Sort values</label>
+
+<%= render partial: "shared/modal" %>
 
 <%= javascript_include_tag 'd3' %>
 <%= javascript_include_tag 'modal_render' %>

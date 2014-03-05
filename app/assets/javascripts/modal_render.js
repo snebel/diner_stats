@@ -1,8 +1,7 @@
 //ajax for rendering menu-item modal
 $('.modal-link').on('click', function(e){
   e.preventDefault();
-  $('.modal-title').empty();
-  $('#menu-item-show').empty();
+  // $('.modal-body').empty();
 
   $.ajax({
     method: 'get',
@@ -10,7 +9,8 @@ $('.modal-link').on('click', function(e){
     success: function(data){
       // console.log(data);
       a = $(data);
-      $('#menu-item-show').append(a.children());
+      $('.modal-body').empty();
+      $('.modal-body').append(a.children());
     },
     fail: function(error){
       console.log(err0r);
