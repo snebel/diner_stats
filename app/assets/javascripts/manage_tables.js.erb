@@ -1,4 +1,5 @@
 var restaurant_id = $('h1')[0].id
+var title;
 
 // ajax for seating a table/creating a meal
 $('.create-meal-li').on('click', function(e){
@@ -19,7 +20,8 @@ $('.create-meal-li').on('click', function(e){
       $table.children('.edit-meal')
         .children('.end-meal')
         .attr('id', data.id);
-      $table.children('h6').append('<span> ('+diners+' diners)</span>');
+      title = $table.children('h6').text();
+      $table.children('h6').text(title.replace(/\([^\)]+\)/g, '('+diners+' diners)'));
     },
     fail: function(data){
       console.log('seating failed')
@@ -45,7 +47,7 @@ $('.end-meal').on('click', function(e){
       edit_meal.hide();
       $table.children('.seat-table').show();
       $table.css('border-color', '#efb73e')
-      $table.children('h6').children('span').remove();
+      $table.children('h6').text(title);
       edit_meal.children('h5').text('Total: $0');
     },
     error: function(data){

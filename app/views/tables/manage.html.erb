@@ -25,7 +25,7 @@
     <% @tables.each do |table| %>
       <div class='table-div container' id='<%= table.id %>' style="left: <%= "#{table.left || 0}px"  %>; top: <%= "#{table.top || 150}px" %>;">
         
-        <h6>Table <%= table.number %></h6>
+        <h6>Table <%= "#{table.number} (#{table.max_seats} seats)" %></h6>
 
         <form class='seat-table'>
 
