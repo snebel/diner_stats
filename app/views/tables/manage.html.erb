@@ -1,16 +1,17 @@
 <%= stylesheet_link_tag 'tables' %>
+<%= render 'shared/header', object: @restaurant %>
 
-<div id='header'>
-    <h1 id='<%= @restaurant.id %>'><%= link_to @restaurant.name, restaurant_path(@restaurant) %> Tables</h1>
+<script type="text/javascript">
+  $('.nav li:contains("Manage Tables")').addClass('active');
+</script>
 
-    <form id='configure'>
-      <%= button_tag 'Arrange Tables', id: 'configure-seats', class: 'btn btn-info btn-xs' %>
-    </form>
-</div>
+  <form id='configure'>
+    <%= button_tag 'Arrange Tables', id: 'configure-seats', class: 'btn btn-info btn-xs' %>
+  </form>
 
 <div class="row">
-  <div class='col-md-2' style='border: 1px solid grey'>
-    <h2>Menu</h2>
+  <div class='col-md-2 menu-div'>
+    <h3>Menu</h3>
     <form id='menu-items'>
     <% @restaurant.menu_items.each do |item| %>
       <div class='checkbox'>

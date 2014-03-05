@@ -1,0 +1,40 @@
+<% menu = @restaurant.menus.last %>
+<nav class="navbar navbar-inverse" role="navigation" id='<%= @restaurant.id %>'>
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/restaurants/1/meals">Diner Stats</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href='<%= restaurant_tables_manage_path(@restaurant.id) %>'>Manage Tables</a></li>
+        <li><a href='<%= restaurant_meals_path(@restaurant.id) %>'>View Stats</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">Menu Actions <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href='<%= edit_restaurant_menu_path(@restaurant, menu) %>'>View Menu</a></li>
+            <% menu.sections.each do |section| %>
+              <li><a href="<%= edit_menu_section_path(menu.id, section.id) %>">Add Items to <%= section.name %> </a></li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Table Actions <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href='<%= restaurant_path(@restaurant) %>'>Add Tables</a></li>
+            <li><a href='<%= restaurant_tables_path(@restaurant) %>'>View All Tables</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

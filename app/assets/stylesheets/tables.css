@@ -1,10 +1,6 @@
 
 body {
-/*  background-color: rgba(174, 167, 159, 0.7) /*#aea79f*/;
-}
-
-.header {
-  display: inline-block;
+  text-align: center;
 }
 
 .table-div {
@@ -24,6 +20,7 @@ body {
 
 form {
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .edit-meal {
@@ -72,5 +69,13 @@ h2 {
 .close {
   margin-right: 15px;
   margin-top: 10px;
+}
+
+.navbar {
+  margin-top: 20px;
+}
+
+.menu-div h3 {
+  margin-top: -30px;
 }
 

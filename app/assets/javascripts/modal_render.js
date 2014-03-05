@@ -22,7 +22,8 @@ function renderModal(url){
       $('.modal-body').append(a.children());
     },
     fail: function(error){
-      console.log(err0r);
+      console.log('e');
+      console.log(error);
     }
   });
 }

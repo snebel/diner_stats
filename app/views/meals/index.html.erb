@@ -1,5 +1,10 @@
+<script type="text/javascript">
+  $('.nav li:contains("View Stats")').addClass('active');
+</script>
 
-<h1 id='<%= @restaurant.id %>'>Statistics Generated at <%= link_to @restaurant.name, restaurant_path(@restaurant.id) %></h1>
+<%= render 'shared/header', object: @restaurant %>
+
+<h1 id='<%= @restaurant.id %>'><%=  @restaurant.name %></h1>
 
 <div class='panel panel-default'>
 	<div class='panel-heading' style='text-align:center;'><b>Restaurant Stats</b></div>
@@ -38,13 +43,12 @@
 	<input type="radio" name='mode' id='tables' data='<%= @menu.id %>'> Tables
 </form>
 
-<label><input type="checkbox" id='box'> Sort values</label>
+<input type="checkbox" id='box'> Sort
 
 <%= render partial: "shared/modal" %>
 
 <%= javascript_include_tag 'd3' %>
 <%= javascript_include_tag 'modal_render' %>
 <%= javascript_include_tag 'bar_graph' %>
-
 
 
