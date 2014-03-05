@@ -36,6 +36,10 @@ class TablesController < ApplicationController
     render :json => {}
   end
 
+  def root
+    redirect_to '/restaurants/1/tables/manage'
+  end
+
   private
   def table_params
     params.permit(:max_seats, :restaurant_id, :number)
