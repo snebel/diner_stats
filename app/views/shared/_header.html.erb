@@ -1,4 +1,4 @@
-<% menu = @restaurant.menus.last %>
+
 <nav class="navbar navbar-inverse" role="navigation" id='<%= @restaurant.id %>'>
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -22,7 +22,7 @@
         <li class="dropdown">
           <a href="" class="dropdown-toggle" data-toggle="dropdown">Menu Actions <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href='<%= edit_restaurant_menu_path(@restaurant, menu) %>'>View Menu</a></li>
+            <li><a href='<%= restaurant_path(@restaurant) %>'>View Menu</a></li>
           </ul>
         </li>
         <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Table Actions <b class="caret"></b></a>
