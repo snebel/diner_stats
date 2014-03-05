@@ -57,6 +57,10 @@ h2 {
   padding-bottom: 15px;
 }
 
+th {
+  text-align: center;
+}
+
 #radio-form {
   text-align: center;
 }
