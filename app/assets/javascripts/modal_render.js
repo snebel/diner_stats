@@ -1,13 +1,22 @@
-//ajax for rendering menu-item modal
+//ajax for rendering menu-item and table modal
+
 $('.modal-link').on('click', function(e){
   e.preventDefault();
-  // $('.modal-body').empty();
+  target = $(e.target);
+  var model = target.attr('data');
+  if (model === 'item') {
+    renderModal('/menu_items/' + target.attr('id'))
+  }
+  else if (model === 'table') {
+    renderModal('/tables/' + target.attr('id'))
+  }
+});
 
+function renderModal(url){
   $.ajax({
     method: 'get',
-    url: '/menu_items/' + $(e.target).attr('id'),
+    url: url,
     success: function(data){
-      // console.log(data);
       a = $(data);
       $('.modal-body').empty();
       $('.modal-body').append(a.children());
@@ -16,4 +25,4 @@ $('.modal-link').on('click', function(e){
       console.log(err0r);
     }
   });
-});
+}

@@ -1,30 +1,17 @@
-<h1>Table <%= @table.number %> at <%= link_to @table.restaurant.name, restaurant_path(@table.restaurant) %> <%= "(#{@table.max_seats} seats)" %></h1>
+<h2>Table <%= "#{@table.number} (#{@table.max_seats} seats)" %></h2>
 
-<h3>Average Seats: <%= @avg_seats %></h3>
-<h3>Average Duration: <%= @avg_duration %> minutes</h3>
-<h3>Average Meal Price: $<%= @avg_price %></h3>	
-<h3>Average Price/Customer: $<%= @avg_customer_price %></h3>	
+<div class='stats'>
+	<h4>Avg. Diners per Meal: <%= @avg_seats %></h4>
+	<h4>Avg. Meal Price: $<%= @avg_price %></h4>	
+	<h4>Avg. Price per Customer: $<%= @avg_customer_price %></h4>
+	<h4>Avg. Duration: <%= @avg_duration %> minutes</h4>	
+</div>
 
-<b>Meals</b>
-<table border='1px'>
-	<tr>
-		<th>Date</th>
-		<th>Diners</th>
-		<th>Menu Items</th>
-		<th>Price ($)</th>
-		<th>Minutes</th>
-	</tr>
-	<% @meals.each do |meal| %>
-		<tr>
-			<td><%= meal.created_at.httpdate %></td>
-			<td><%= meal.diners %></td>
-			<td>
-				<% meal.menu_items.each do |item| %>
-					<%= link_to item.name, menu_item_path(item.id) %>
-				<% end %>
-			</td>
-			<td><%= meal.price %></td>
-			<td><%= (meal.duration / 60.0).round(2) %></td>
-		</tr>
-	<% end %>
-</table>
+<div class='panel panel-default'>
+	<div class='panel-heading' style='text-align:center;'><b>All Meals at Table <%= @table.number %></b></div>
+
+	<%= render partial: "shared/meals_table" %>
+</div>
+
+<%= render partial: "shared/modal" %>
+<%= javascript_include_tag 'modal_render' %>

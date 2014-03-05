@@ -17,15 +17,14 @@
           <td>$<%= meal.price %></td>
           <td>
             <% meal.menu_items.each do |item| %>
-              <!-- <%= link_to item.name, menu_item_path(item.id) %> -->
-              <a class='modal-link' href='' id='<%= item.id %>' data-toggle="modal" data-target="#myModal"><%= item.name %></a>
+              <a class='modal-link' href='' id='<%= item.id %>' data='item' data-toggle="modal" data-target="#myModal"><%= item.name %></a>
             <% end %>
           </td>
           <td><%= (meal.duration / 60.0).round(2) %> mins</td>
           <td><%= meal.diners %></td>
-          <td><%= link_to meal.table.number, table_path(meal.table.id) %></td>
+          <td><a class='modal-link' href='' id='<%= meal.table.id %>' data='table' data-toggle="modal" data-target="#myModal"><%= meal.table.number %></a>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  
