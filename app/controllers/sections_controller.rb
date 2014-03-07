@@ -6,6 +6,7 @@ class SectionsController < ApplicationController
 
   def destroy
     Section.delete(params[:id])
+    MenuItem.where(section_id: params[:id]).delete_all
     render json: "deleted", :status => :ok
   end
 

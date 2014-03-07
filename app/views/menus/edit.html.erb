@@ -1,21 +1,24 @@
 
-<h1>Edit Menu</h1>
-<h2><%= "#{@restaurant.name}: #{@menu.name}" %></h2>
+<h2><%= "Menu: #{@menu.name}" %></h2>
 
-<%= text_field_tag :name, nil, placeholder: 'menu section', id: 'section-name' %>
-<%= hidden_field_tag :restaurant, value = @restaurant.id %>
-<%= hidden_field_tag :menu, value = @menu.id %>
-<%= button_tag 'add section', id: 'add-section' %>
+<div class='form-inline'>
+  <%= text_field_tag :name, nil, placeholder: 'menu section', id: 'section-name', class: 'form-control input-small' %>
+  <%= hidden_field_tag :restaurant, value = @restaurant.id %>
+  <%= hidden_field_tag :menu, value = @menu.id %>
+  <%= button_tag 'add section', id: 'add-section', class: 'btn btn-default' %>
+</div>
 
-<ul id='sections'>
+<div id='sections'>
 <% @menu.sections.each do |section| %>
-  <li id="<%= section.id %>">
-    <a href="/menus/<%= @menu.id %>/sections/<%= section.id %>/edit"><%= section.name %></a>
-    <%= button_to 'delete', section, method: :delete, id: section.id, class: 'delete-section' %>
-  </li>
+  <div id='<%= section.id %>'>
+    <h3 id='<%= section.id %>'>
+      <a href="/menus/<%= @menu.id %>/sections/<%= section.id %>/edit"><%= section.name %> </a><a href='' class='delete-section'><small>delete</small></a>
+    </h3>
+    <% section.menu_items.each do |item| %>
+      <h5><%= "#{item.name} ($#{item.price})" %> <small>remove</small></h5>
+    <% end %>
+  </div>
 <% end %>
-</ul>
 
-<%= link_to "back to #{@restaurant.name}", restaurant_path(@restaurant.id) %>
 
 <%= javascript_include_tag 'edit_menu' %>

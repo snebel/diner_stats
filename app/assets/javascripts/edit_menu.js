@@ -11,7 +11,6 @@ $('#add-section').on('click', function(e){
     data: {name: $('#section-name').val()},
     dataType: 'json',
     success: function(data){
-      
       $('#section-name').val('');
       appendSection(data);      
     },
@@ -23,22 +22,22 @@ $('#add-section').on('click', function(e){
 });
 
 function appendSection(data) {
-  var li = $('<li>')
-    .html("<a href='/menus/" + data.menu_id + '/sections/' + data.id + "/edit'>" + data.name + "</a>");    ;
-  $('#sections').append(li);
+  var section = $('<h3>')
+    .html("<a href='/menus/" + data.menu_id + '/sections/' + data.id + "/edit'>" + data.name + "</a>");
+  section.attr('')
+  section.append("<a class='delete-section' href=''><small> delete</small></a>")
+  $('#sections').append(section);
 }
 
 $('.delete-section').on('click', function(e){
   e.preventDefault();
-  $('#' + e.target.id).remove();
-  // });
+  var div = $(e.target).parents('div').first();
+  div.remove()
+
   $.ajax({
     method: 'delete',
     dataType: 'json',
-    url: '/sections/' + e.target.id,
-    success: function(data){
-
-    }
+    url: '/sections/' + div.attr('id')
   })
 });
 

@@ -5,17 +5,22 @@ $('.modal-link').on('click', function(e){
   e.preventDefault();
   target = $(e.target);
   var model = target.attr('data');
+  var id = target.attr('id');
+
   if (model === 'item') {
-    renderModal('/menu_items/' + target.attr('id'))
+    renderModal('/menu_items/' + id)
   }
   else if (model === 'table') {
-    renderModal('/tables/' + target.attr('id'))
+    renderModal('/tables/' + id)
   }
   else if (model === 'new-table') {
-    renderModal('/restaurants/1/tables/new')
+    renderModal('/restaurants/' + id + '/tables/new')
   }
   else if (model === 'tables') {
-    renderModal('/restaurants/1/tables')
+    renderModal('/restaurants/' + id +'/tables')
+  }
+  else if (model === 'view-menu') {
+    renderModal('/restaurants/' + id + '/menus/' + target.attr('menu-id') + '/edit')
   }
 });
 
@@ -25,9 +30,8 @@ function renderModal(url){
     method: 'get',
     url: url,
     success: function(data){
-      a = $(data);
       $('.modal-body').empty();
-      $('.modal-body').append(a.children());
+      $('.modal-body').append($(data).children());
     },
     fail: function(error){
       console.log(error);
