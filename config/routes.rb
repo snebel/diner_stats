@@ -3,14 +3,12 @@ DinerStats::Application.routes.draw do
 
   resources :restaurants, only: [:show] do
     get '/tables/manage' => 'tables#manage'
-    resources :tables, only: [:create, :index ]
+    resources :tables, only: [:create, :index, :new, :destroy]
     resources :meals, only: [:index]
     resources :menus, only: [:create, :edit, :show] do
       resources :sections, only: [:create]
     end   
   end
-
-
 
   resources :menus, only: [:show] do
     resources :sections, only: [:edit, :index]

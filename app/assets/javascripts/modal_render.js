@@ -10,6 +10,12 @@ $('.modal-link').on('click', function(e){
   else if (model === 'table') {
     renderModal('/tables/' + target.attr('id'))
   }
+  else if (model === 'new-table') {
+    renderModal('/restaurants/1/tables/new')
+  }
+  else if (model === 'tables') {
+    renderModal('/restaurants/1/tables')
+  }
 });
 
 function renderModal(url){
@@ -22,7 +28,6 @@ function renderModal(url){
       $('.modal-body').append(a.children());
     },
     fail: function(error){
-      console.log('e');
       console.log(error);
     }
   });

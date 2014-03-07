@@ -1,0 +1,9 @@
+<h2>Add a New Table</h2>
+
+<%= form_tag '/restaurants/1/tables', method: 'post', class: 'form-inline' do %>
+  <div class='form-group'>
+    <input type='text' placeholder='Table' name='number' class='form-control input-small' style='width:100px;'>
+    <input type='number' placeholder='Seats' name='max_seats' class='form-control input-small' style='width:75px;'>
+  </div>
+    <button type='submit' class='btn btn-default'>Add Table</button>
+<% end %>

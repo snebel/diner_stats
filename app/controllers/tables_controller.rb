@@ -1,7 +1,11 @@
 class TablesController < ApplicationController
+  def new
+    @restaurant = Restaurant.find(params[:restaurant_id])
+  end
+
   def create
     Table.create(table_params)
-    redirect_to restaurant_path(params[:restaurant_id])
+    redirect_to restaurant_tables_manage_path(params[:restaurant_id])
   end
 
   def manage
@@ -38,6 +42,10 @@ class TablesController < ApplicationController
 
   def root
     redirect_to '/restaurants/1/tables/manage'
+  end
+
+  def destroy
+
   end
 
   private

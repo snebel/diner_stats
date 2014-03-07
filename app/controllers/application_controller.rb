@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def avg_price(meals)
+    return 0 if meals.count == 0
   	(revenue(meals) / meals.count).round(2)
   end	
 
@@ -24,6 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def avg_customer_price(meals)
+    return 0 if meals.count == 0
   	(revenue(meals) / total_diners(meals)).round(2)
   end
 

@@ -1,3 +1,4 @@
+
 <%= render 'shared/header', object: @restaurant %>
 
 <h1><%= @restaurant.name %></h1>
@@ -12,10 +13,4 @@
 
 
 <h2><%= link_to 'Manage Tables', restaurant_tables_manage_path(@restaurant.id) %></h2>
-
-<%= form_tag "/restaurants/#{@restaurant.id}/tables", method: 'post', class: 'form-inline' do %>
-  seats <%= select_tag(:max_seats, options_for_select(Array(1..8))) %>
-  <%= text_field_tag :number, nil, placeholder: 'table #', class: 'form-control input-small', style: 'width: 80px;' %>
-  <%= submit_tag 'add table', class: 'btn btn-default' %>
-<% end %>
 
