@@ -5,20 +5,22 @@
 	<tr>
 		<th>Num</th>
 		<th>Seats</th>
-		<th># Meals</th>
+		<th>Meals</th>
 		<th>Price/Meal</th>
 		<th>Price/Customer</th>
 		<th>Avg. Meal Time</th>
 	</tr>
 	<% @tables.each do |table| %>
 		<tr>
-			<td><%= link_to table.number, table_path(table.id) %></td>
+			<td><a class='modal-link' href='' id='<%= table.id %>' data='table' data-toggle="modal" data-target="#myModal"><%= table.number %></a></td>
 			<td><%= table.max_seats %></td>
 			<td><%= table.meals.count %></td>
 			<td>$<%= table.avg_price %></td>
 			<td>$<%= table.avg_customer_price %></td>
 			<td><%= table.avg_meal_time %> mins</td>
-			<td><%= button_tag 'Delete', method: 'delete', controller: 'tables', action: 'destroy', class: 'btn btn-primary btn-xs' %></td>
+			<td><%= button_to 'Delete', restaurant_table_path(@restaurant.id, table.id), method: 'delete', class: 'btn btn-primary btn-xs' %></td>
 		</tr>
 	<% end %>
 </table>
+
+<%= javascript_include_tag 'modal_render' %>

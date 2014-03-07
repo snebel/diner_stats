@@ -1,6 +1,7 @@
 //ajax for rendering menu-item and table modal
 
 $('.modal-link').on('click', function(e){
+  console.log('link clicked')
   e.preventDefault();
   target = $(e.target);
   var model = target.attr('data');
@@ -19,6 +20,7 @@ $('.modal-link').on('click', function(e){
 });
 
 function renderModal(url){
+  console.log('rendering')
   $.ajax({
     method: 'get',
     url: url,

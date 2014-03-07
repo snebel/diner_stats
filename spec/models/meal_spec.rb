@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Meal do
   before do
     @menu = create(:menu) 
-    @meal = build(:meal, menu_id: @menu.id)
+    @meal = create(:meal, menu_id: @menu.id)
     @item = build(:menu_item)
   end
 
@@ -21,7 +21,8 @@ describe Meal do
   end
 
   it "belongs to a table" do
-    
+    @meal.table.should_not be_nil
   end
+
 
 end

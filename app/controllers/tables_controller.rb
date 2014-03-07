@@ -45,7 +45,9 @@ class TablesController < ApplicationController
   end
 
   def destroy
-
+    Table.delete(params[:id])
+    Meal.where(table_id: params[:id]).delete_all
+    redirect_to restaurant_tables_manage_path(params[:restaurant_id])
   end
 
   private
