@@ -36,6 +36,7 @@ function renderModal(url){
     },
     error: function(error){
       console.log(error);
+      $('.modal-body').empty();
       $('.modal-body').append('Not a current menu item.');
     }
   });
