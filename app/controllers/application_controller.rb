@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
     items.map do |item|
       num = item.meal_memberships.count
       freq = num * item.price / revenue
-      {letter: item.name[0..3], frequency: freq}
+      {letter: "#{item.name[0..3]}.", frequency: freq}
     end
   end
 
@@ -67,6 +67,17 @@ class ApplicationController < ActionController::Base
       total_rev = table_rev(table)
       rev_share = (total_rev / revenue).round(2)
       {letter: table.number, frequency: rev_share}
+    end
+  end
+
+  def meals_by_time(restaurant, time1, time2)
+    if time1 == nil
+      restaurant.meals.sort_by(&:created_at)
+    else
+      restaurant.meals.select do |meal|
+        meal_date = meal.created_at.to_date
+        meal_date >= time1.to_date && meal_date <= time2.to_date
+      end.sort_by(&:created_at)
     end
   end
 

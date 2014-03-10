@@ -15,9 +15,9 @@ class MealsController < ApplicationController
     render :json => meal  
   end
 
-  def index 
+  def index
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @meals = @restaurant.meals
+    @meals = meals_by_time(@restaurant, params[:time1], params[:time2])
     @diners = total_diners(@meals)
     @avg_duration = avg_duration(@meals)
     @revenue = revenue(@meals)
@@ -31,6 +31,10 @@ class MealsController < ApplicationController
         render json: item_revenue_data(@restaurant.menu_items, @revenue)
       end
     end
+  end
+
+  def times
+    binding.pry
   end
 
   private

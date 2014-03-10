@@ -1,8 +1,9 @@
 
-var rows, svg;
-var items_url = '/restaurants/' + $('#restaurant').attr('data') + '/meals'
-var sections_url = '/menus/' + $('#menu').attr('data') + '/sections'
-var tables_url = '/restaurants/' + $('#restaurant').attr('data') + '/tables'
+var rows,
+  svg,
+  items_url = '/restaurants/' + $('#restaurant').attr('data') + '/meals',
+  sections_url = '/menus/' + $('#menu').attr('data') + '/sections',
+  tables_url = '/restaurants/' + $('#restaurant').attr('data') + '/tables';
  // = [
  //  {letter: 'letter', frequency: 'frequency'},
  //  {letter: 'B', frequency: 0.085},
@@ -70,17 +71,8 @@ function render(data){
       .attr("height", function(d) { return height - y(d.frequency); });
 }
 
-// d3.select("input").on("change", change(rows));
-
-// var sortTimeout = setTimeout(function() {
-//   d3.select("input").property("checked", true).each(change(rows));
-// }, 2000);
-
 function change(data) {
-  // clearTimeout(sortTimeout);
-  
-  // Copy-on-write since tweens are evaluated after a delay.
-  // not sure what the conditional here is doing...
+
   var x0 = x.domain(data.sort($('#box').prop('checked')
       ? function(a, b) { return b.frequency - a.frequency; }
       : function(a, b) { return d3.ascending(a.letter, b.letter); }
@@ -112,7 +104,10 @@ function fetch(url){
   });
 }
 
-$('#box').on('change', function(){change(rows)});
+$('#box').on('change', function(){
+  change(rows)
+});
+
 $('#radio-form').on('change', function(e){
   $('#box').removeAttr('checked');
   if (e.target.id === 'restaurant'){fetch(items_url);}

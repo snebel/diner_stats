@@ -13,7 +13,7 @@
     <tbody>
       <% @meals.each do |meal| %>
         <tr>
-          <td><%= meal.created_at.httpdate %></td>
+          <td><%= meal.created_at.to_formatted_s(:long)  %></td>
           <td>$<%= meal.price %></td>
           <td>
             <% meal.menu_items.each do |item| %>
