@@ -8,11 +8,6 @@ class TablesController < ApplicationController
     redirect_to restaurant_tables_manage_path(params[:restaurant_id])
   end
 
-  def manage
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    @tables = @restaurant.tables
-  end
-
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
     @tables = @restaurant.tables
@@ -38,10 +33,6 @@ class TablesController < ApplicationController
     table_data = params[:tables].values
     set_positions(table_data)
     render :json => {}
-  end
-
-  def root
-    redirect_to '/restaurants/1/tables/manage'
   end
 
   def destroy

@@ -1,5 +1,4 @@
 
-
 <h2><%= @section.name %></h2>
 
 <%= form_tag nil, class: 'form form-inline' do %>
@@ -17,7 +16,7 @@
 
 <a class='modal-link' data='view-menu' id='<%= @menu.restaurant.id %>' menu-id='<%= @menu.id %>' data-toggle="modal" data-target="#myModal" href=''>Back to Menu</a>
 
-<%= render partial: "shared/modal" %>
+
 <%= javascript_include_tag 'modal_render' %>
 <%= javascript_include_tag 'edit_menu' %>
 

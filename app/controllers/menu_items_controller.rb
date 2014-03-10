@@ -1,19 +1,18 @@
 class MenuItemsController < ApplicationController
   def create
-
     @item = MenuItem.create(item_params)
     render json: @item
   end
 
   def destroy
     item = MenuItem.find(params[:id])
-    section = Section.find(item.section_id)
-    item.delete
-    redirect_to edit_menu_section_path(section.menu_id, section.id)
+    item.update(section_id: nil)
+    render json: {}
   end
 
   def show
     @item = MenuItem.find(params[:id])
+    @menu = @item.section.menu
     @meals = @item.meals.uniq
     @table_percent = @item.table_percent
     @item_percent = @item.item_percent

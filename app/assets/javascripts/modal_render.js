@@ -34,8 +34,9 @@ function renderModal(url){
       $('.modal-body').empty();
       $('.modal-body').append($(data).children());
     },
-    fail: function(error){
+    error: function(error){
       console.log(error);
+      $('.modal-body').append('Not a current menu item.');
     }
   });
 }

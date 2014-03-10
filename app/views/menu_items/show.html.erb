@@ -12,6 +12,6 @@
 	<%= render partial: "shared/meals_table" %>
 </div>
 
-<%= render partial: "shared/modal" %>
+<a class='modal-link' data='view-menu' id='<%= @menu.restaurant_id %>' menu-id='<%= @menu.id %>' data-toggle="modal" data-target="#myModal" href=''>View Menu</a>
 
 <%= javascript_include_tag 'modal_render' %>

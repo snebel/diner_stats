@@ -1,16 +1,61 @@
 
+<%= stylesheet_link_tag 'tables' %>
 <%= render 'shared/header', object: @restaurant %>
 
-<h1><%= @restaurant.name %></h1>
-<h2><%= link_to "Stats", restaurant_meals_path(@restaurant.id) %>
-<h2>Menu: <%= link_to @menu.name, edit_restaurant_menu_path(@restaurant, @menu) %></h2>
+<script type="text/javascript">
+  $('.nav li:contains("Manage Tables")').addClass('active');
+</script>
 
-<% @menu.sections.each do |section| %>
-  <h4><%= link_to section.name, edit_menu_section_path(@menu.id, section.id)%></h4>
-<% end %>
+  <form id='configure'>
+    <%= button_tag 'Arrange Tables', id: 'configure-seats', class: 'btn btn-info btn-xs' %>
+  </form>
 
-<h2><%= link_to 'Tables', restaurant_tables_path(@restaurant.id) %> (<%= @restaurant.tables.count %>)</h2>
+<div class="row">
+  <div class='col-md-2 col-sm-3 col-xs-3 menu-div'>
+    <h3>Menu</h3>
+    <form id='menu-items'>
+    <% @restaurant.menu_items.each do |item| %>
+      <div class='checkbox'>
+        <input type='checkbox' value='<%= item.id %>'> <%= "#{item.name[0..9]} $#{item.price}" %></input>  
+      </div>
+    <% end %>
+    </form>
+    </ul>
+  </div>
 
+  <div class='col-md-10'>
+    <% @tables.each do |table| %>
+      <div class='table-div container' id='<%= table.id %>' style="left: <%= "#{table.left || 0}px"  %>; top: <%= "#{table.top || 150}px" %>;">
+        
+        <h6>Table <%= "#{table.number} (#{table.max_seats} seats)" %></h6>
 
-<h2><%= link_to 'Manage Tables', restaurant_tables_manage_path(@restaurant.id) %></h2>
+        <form class='seat-table'>
+
+          <div class='btn-group'>
+            <button type="button" class="create-meal btn btn-sm btn-warning dropdown-toggle" data-toggle='dropdown'>Seat Table <span class='caret'></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <% table.max_seats.downto(1) do |n| %>
+                <li class='create-meal-li'><a><%= n %></a></li>
+              <% end %>
+            </ul>
+          </div>
+
+        </form>
+
+        <form class='edit-meal'>
+          <h5 value=0>Total: $0</h5>
+          <%= button_tag 'Add Items', class: 'add-item btn btn-sm btn-info' %>
+          <%= button_tag 'End Meal', class: 'end-meal btn btn-sm btn-warning' %> 
+        </form>
+
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+<%= javascript_include_tag '//code.jquery.com/ui/1.10.4/jquery-ui.js' %>
+<%= javascript_include_tag 'manage_tables' %>
+<%= javascript_include_tag 'modal_render' %>
 
