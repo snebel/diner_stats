@@ -1,9 +1,9 @@
 <%= stylesheet_link_tag 'tables' %>
+<%= render 'shared/header', object: @restaurant %>
+
 <script type="text/javascript">
   $('.nav li:contains("View Stats")').addClass('active');
 </script>
-
-<%= render 'shared/header', object: @restaurant %>
 
 <h1 id='<%= @restaurant.id %>'><%=  @restaurant.name %></h1>
 
@@ -47,6 +47,6 @@
 <input type="checkbox" id='box'> Sort
 
 
-
+<%= javascript_include_tag 'modal_render' %>
 <%= javascript_include_tag 'bar_graph' %>
 
