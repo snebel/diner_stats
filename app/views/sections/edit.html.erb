@@ -1,29 +1,23 @@
-    <%= button_to 'delete', section, method: :delete, id: section.id, class: 'delete-section' %>
 
 
-<h1>Add Menu Items to <%= @section.name %></h1>
+<h2><%= @section.name %></h2>
 
-<%= form_tag('/menu_items', method: 'post') do %>
-  <%= hidden_field_tag :section_id, value = @section.id %>
-  <%= text_field_tag :name, nil, placeholder: 'item name', id: 'section-name' %>
-  <%= text_field_tag :price, nil, placeholder: 'price', id: 'section-name' %>
-  <%= submit_tag 'add item' %>
+<%= form_tag nil, class: 'form form-inline' do %>
+  <%= hidden_field_tag :section_id, @section.id %>
+  <%= text_field_tag :name, nil, placeholder: 'item name', id: 'item-name', class: 'form-control input-small' %>
+  <%= text_field_tag :price, nil, placeholder: 'price', id: 'item-price', class: 'form-control input-small' %>
+  <%= button_tag 'add item', class: 'btn btn-default add-item' %>
 <% end %>
 
-<h2>Items</h2>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-  </tr>
+<div id='section-items'>
   <% @section.menu_items.each do |item| %>
-    <tr>
-      <td><%= item.name %></td>
-      <td><%= item.price %></td>
-      <td><%= button_to 'delete', item, method: :delete %></td>
-    </tr>
+    <h4 id='<%= item.id %>'><%= "#{item.name} ($#{item.price})" %> <a class='delete-item' href=''><small>remove</small></a></h4>
   <% end %>
-</table>
+</div>
 
-<%= link_to 'back to menu', edit_restaurant_menu_path(@restaurant_id, @section.menu_id) %>
+<a class='modal-link' data='view-menu' id='<%= @menu.restaurant.id %>' menu-id='<%= @menu.id %>' data-toggle="modal" data-target="#myModal" href=''>Back to Menu</a>
+
+<%= render partial: "shared/modal" %>
+<%= javascript_include_tag 'modal_render' %>
+<%= javascript_include_tag 'edit_menu' %>
 

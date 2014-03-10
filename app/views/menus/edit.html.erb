@@ -12,13 +12,13 @@
 <% @menu.sections.each do |section| %>
   <div id='<%= section.id %>'>
     <h3 id='<%= section.id %>'>
-      <a href="/menus/<%= @menu.id %>/sections/<%= section.id %>/edit"><%= section.name %> </a><a href='' class='delete-section'><small>delete</small></a>
+      <a href='' class='modal-link' data='edit-section' id='<%= section.id %>' menu-id='<%= @menu.id %>' data-toggle="modal" data-target="#myModal"><%= section.name %></a><a href='' class='delete-section'><small> delete</small></a>
     </h3>
     <% section.menu_items.each do |item| %>
-      <h5><%= "#{item.name} ($#{item.price})" %> <small>remove</small></h5>
+      <h5 id='<%= item.id %>'><a class='modal-link' href='' id='<%= item.id %>' data='item' data-toggle="modal" data-target="#myModal"><%= item.name %></a> <%= "($#{item.price})" %></h5>
     <% end %>
   </div>
 <% end %>
 
-
 <%= javascript_include_tag 'edit_menu' %>
+<%= javascript_include_tag 'modal_render' %>

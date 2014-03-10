@@ -1,7 +1,3 @@
-// <restaurant data-pizza="pepperoni" data-id="<%= restaurant.id %>"> </restuarant>
-
-// e.target.data('id');
-// e.target.data('pizza');
 
 $('#add-section').on('click', function(e){
   e.preventDefault();
@@ -40,4 +36,46 @@ $('.delete-section').on('click', function(e){
     url: '/sections/' + div.attr('id')
   })
 });
+
+$('.delete-item').on('click', function(e){
+  e.preventDefault();
+  var item = $(e.target).parents('h4');
+  item.remove();
+
+  $.ajax({
+    method: 'delete',
+    dataType: 'json',
+    url: '/menu_items/' + item.attr('id')
+  })
+});
+
+$('.add-item').on('click', function(e){
+  e.preventDefault();
+  
+  $.ajax({
+    method: 'post',
+    url: '/menu_items',
+    dataType: 'json',
+    data: {
+      name: $('#item-name').val(),
+      price: $('#item-price').val(),
+      section_id: $('#section_id').val()
+    },
+    success: function(data){
+      console.log(data)
+      $('#item-name').val('');
+      $('#item-price').val('');
+      var h4 = $('<h4>').attr('id', data.id)
+        .text(data.name +' ($'+ parseFloat(data.price) +')')
+        .append("<a class='delete-item' href><small> remove</small>");
+      $('#section-items').append(h4);
+    },
+    failure: function(error){
+      console.log(error);
+    }
+  });
+});
+
+
+
 

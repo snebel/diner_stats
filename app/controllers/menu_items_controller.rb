@@ -1,8 +1,8 @@
 class MenuItemsController < ApplicationController
   def create
-    MenuItem.create(item_params)
-    section = Section.find(params[:section_id])
-    redirect_to edit_menu_section_path(section.menu_id, section.id)
+
+    @item = MenuItem.create(item_params)
+    render json: @item
   end
 
   def destroy

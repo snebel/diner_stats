@@ -1,9 +1,8 @@
 //ajax for rendering menu-item and table modal
 
 $('.modal-link').on('click', function(e){
-  console.log('link clicked')
-  e.preventDefault();
-  target = $(e.target);
+  $('.modal-body').empty();
+  var target = $(e.target);
   var model = target.attr('data');
   var id = target.attr('id');
 
@@ -22,10 +21,12 @@ $('.modal-link').on('click', function(e){
   else if (model === 'view-menu') {
     renderModal('/restaurants/' + id + '/menus/' + target.attr('menu-id') + '/edit')
   }
+  else if (model === 'edit-section') {
+    renderModal('/menus/' + target.attr('menu-id') + '/sections/' + id + '/edit');
+  }
 });
 
 function renderModal(url){
-  console.log('rendering')
   $.ajax({
     method: 'get',
     url: url,

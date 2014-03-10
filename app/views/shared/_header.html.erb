@@ -22,13 +22,13 @@
         <li class="dropdown">
           <a href="" class="dropdown-toggle" data-toggle="dropdown">Menu Actions <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a class='modal-link' data='view-menu' id='<%= @restaurant.id %>' menu-id='<%= menu.id %>' data-toggle="modal" data-target="#myModal">View Menu</a></li>
+            <li><a class='modal-link' data='view-menu' id='<%= @restaurant.id %>' menu-id='<%= menu.id %>' data-toggle="modal" data-target="#myModal" href=''>View Menu</a></li>
           </ul>
         </li>
         <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Table Actions <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a class='modal-link' data='new-table' id='<%= @restaurant.id %>' data-toggle="modal" data-target="#myModal">Add Table</a></li>
-            <li><a class='modal-link' id='<%= @restaurant.id %>' data='tables' data-toggle="modal" data-target="#myModal">View All Tables</a></li>
+            <li><a class='modal-link' data='new-table' id='<%= @restaurant.id %>' data-toggle="modal" data-target="#myModal" href=''>Add Table</a></li>
+            <li><a class='modal-link' id='<%= @restaurant.id %>' data='tables' data-toggle="modal" data-target="#myModal" href=''>View All Tables</a></li>
           </ul>
         </li>
       </ul>
