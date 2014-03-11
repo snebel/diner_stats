@@ -1,7 +1,6 @@
 
-var rows,
-  svg,
-  items_url = '/restaurants/' + $('#restaurant').attr('data') + '/meals',
+var rows, svg, time1 = '', time2 = '',
+  items_url = '/restaurants/' + $('#restaurant').attr('data') + '/meals?time1=' + time1 + '&time2=' + time2,
   sections_url = '/menus/' + $('#menu').attr('data') + '/sections',
   tables_url = '/restaurants/' + $('#restaurant').attr('data') + '/tables';
  // = [
@@ -108,6 +107,11 @@ $('#box').on('change', function(){
   change(rows)
 });
 
+// $('.date').on('change', function(){
+//   time1 = $('#time1').val();
+//   time2 = $('#time2').val();
+// });
+
 $('#radio-form').on('change', function(e){
   $('#box').removeAttr('checked');
   if (e.target.id === 'restaurant'){fetch(items_url);}
@@ -116,7 +120,8 @@ $('#radio-form').on('change', function(e){
 });
 
 $(function() {
-  fetch(items_url);
+  // fetch(items_url);
+  fetch(document.URL)
 });
 
 

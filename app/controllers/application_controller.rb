@@ -71,7 +71,8 @@ class ApplicationController < ActionController::Base
   end
 
   def meals_by_time(restaurant, time1, time2)
-    if time1 == nil
+    # binding.pry
+    if time1 == nil || time1 == ''
       restaurant.meals.sort_by(&:created_at)
     else
       restaurant.meals.select do |meal|

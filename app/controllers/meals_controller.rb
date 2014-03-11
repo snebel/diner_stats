@@ -24,11 +24,12 @@ class MealsController < ApplicationController
     @avg_price = (@revenue / @meals.count).round(2) unless @meals.count == 0
     @avg_customer_price = (@revenue / @diners).round(2) unless @diner == 0
     @menu = @restaurant.menus.last
+    # binding.pry
 
     respond_to do |format|
       format.html
       format.json do
-        render json: item_revenue_data(@restaurant.menu_items, @revenue)
+        render json: item_revenue_data(@meals.map{|m| m.menu_items}.flatten.uniq, @revenue)
       end
     end
   end

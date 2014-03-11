@@ -7,12 +7,12 @@
 
 <h1 id='<%= @restaurant.id %>'><%=  @restaurant.name %></h1>
 
-<%= form_tag restaurant_meals_path(@restaurant.id), method: 'get' do %>
+<form action='<%= restaurant_meals_path(@restaurant.id) %>'>
 	<% meal_dates = @restaurant.meals.map{|m| m.created_at.strftime("%d %b %Y")}.uniq.sort %>
-	<%= select_tag :time1, options_for_select(meal_dates) %> 
-	to <%= select_tag :time2, options_for_select(meal_dates) %>
+	<%= select_tag :time1, options_for_select(meal_dates), id: 'time1', class: 'date' %> 
+	to <%= select_tag :time2, options_for_select(meal_dates), id: 'time2', class: 'date' %>
 	<%= submit_tag 'find', class: 'btn btn-default btn-xs' %>
-<% end %>
+</form>
 
 <div class='panel panel-default'>
 	<div class='panel-heading' style='text-align:center;'><b>Restaurant Stats</b></div>
