@@ -1,11 +1,6 @@
 class MealsController < ApplicationController
   def create
-    meal = Meal.create(meal_params)
-    meal.update(
-      menu_id: Restaurant.find(params[:restaurant_id]).menus.last.id,
-      duration: 0,
-      price: 0)
-    render :json => meal
+    render json: Meal.create(meal_params)
   end
 
   def update
@@ -34,12 +29,8 @@ class MealsController < ApplicationController
     end
   end
 
-  def times
-    binding.pry
-  end
-
   private
   def meal_params
-    params.permit(:table_id, :diners)
+    params.permit(:table_id, :diners, :menu_id)
   end
 end

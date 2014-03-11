@@ -1,5 +1,4 @@
-var restaurant_id = $('.navbar').attr('id');
-var title;
+var restaurant_id = $('.navbar').attr('id'), title;
 
 // ajax for seating a table/creating a meal
 $('.create-meal-li').on('click', function(e){
@@ -7,12 +6,17 @@ $('.create-meal-li').on('click', function(e){
   var $table = $(e.target).parents('.table-div');
   var table_id = $table.attr('id');
   var diners = $(e.target).parent().text();
+  var menu_id = $('.menu-div').attr('id');
   
   $.ajax({
     method: 'post',
     url: '/tables/' + table_id +'/meals',
     dataType: 'json',
-    data: {restaurant_id: restaurant_id, diners: diners},
+    data: {
+      restaurant_id: restaurant_id,
+      diners: diners,
+      menu_id: menu_id
+    },
     success: function(data){
       $table.children('.seat-table').hide();
       $table.children('.edit-meal').show();

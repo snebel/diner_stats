@@ -5,7 +5,7 @@ class TablesController < ApplicationController
 
   def create
     Table.create(table_params)
-    redirect_to restaurant_tables_manage_path(params[:restaurant_id])
+    redirect_to restaurant_path(params[:restaurant_id])
   end
 
   def index

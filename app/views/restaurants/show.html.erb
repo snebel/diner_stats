@@ -10,7 +10,7 @@
   </form>
 
 <div class="row">
-  <div class='col-md-2 col-sm-3 col-xs-3 menu-div'>
+  <div class='col-md-2 col-sm-3 col-xs-3 menu-div' id='<%= @restaurant.menus.last.id %>'>
     <h3>Menu</h3>
     <form id='menu-items'>
     <% @restaurant.menu_items.each do |item| %>

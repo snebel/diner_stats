@@ -7,6 +7,7 @@
 
 <h1 id='<%= @restaurant.id %>'><%= @restaurant.name %></h1>
 
+<h4>See stats by date</h4>
 <form action='<%= restaurant_meals_path(@restaurant.id) %>'>
 	<% meal_dates = @restaurant.meals.map{|m| m.created_at.strftime("%b %d, %Y")}.uniq.sort %>
 	<%= select_tag :time1, options_for_select(meal_dates), id: 'time1', class: 'date' %> 

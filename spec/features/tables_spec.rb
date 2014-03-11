@@ -4,7 +4,7 @@ require 'spec_helper'
 feature 'managing a table' do
 	before do
 		@table = create(:table)
-		visit restaurant_tables_manage_path(@table.restaurant.id)
+		visit restaurant_path(@table.restaurant.id)
 	end
 
 	scenario 'restaurant has a page for managing tables' do

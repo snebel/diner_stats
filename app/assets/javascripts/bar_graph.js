@@ -1,9 +1,10 @@
 
 var rows, svg, time1 = '', time2 = '';
-// = [
+//rows = [
 //  {letter: 'letter', frequency: 'frequency'},
 //  {letter: 'B', frequency: 0.085},
-//  {letter: 'A', frequency: 0.185}
+//  {letter: 'A', frequency: 0.185},
+//  ...
 // ]
 
 var margin = {top: 40, right: 20, bottom: 50, left: 80},
