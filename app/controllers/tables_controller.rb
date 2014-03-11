@@ -11,11 +11,12 @@ class TablesController < ApplicationController
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
     @tables = @restaurant.tables
-    revenue = revenue(@restaurant.meals)
+    @meals = meals_by_time(@restaurant.meals, params[:time1], params[:time2])
+    revenue = revenue(@meals)
     respond_to do |format|
       format.html
       format.json do
-        render json: table_revenue_data(@tables, revenue)
+        render json: table_revenue_data(@meals, @tables, revenue)
       end
     end
   end
@@ -38,7 +39,7 @@ class TablesController < ApplicationController
   def destroy
     Table.delete(params[:id])
     Meal.where(table_id: params[:id]).delete_all
-    redirect_to restaurant_tables_manage_path(params[:restaurant_id])
+    redirect_to restaurant_path(params[:restaurant_id])
   end
 
   private

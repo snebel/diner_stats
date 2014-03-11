@@ -20,7 +20,6 @@ class SectionsController < ApplicationController
     sections = menu.sections
     meals = meals_by_time(menu.meals, params[:time1], params[:time2])
     revenue = revenue(meals)
-    # binding.pry
     render json: sections_revenue_data(meals, sections, revenue)
   end
   

@@ -1,11 +1,10 @@
 
-var rows, svg, time1 = '', time2 = '',
-  tables_url = '/restaurants/' + $('#items').attr('data') + '/tables';
- // = [
- //  {letter: 'letter', frequency: 'frequency'},
- //  {letter: 'B', frequency: 0.085},
- //  {letter: 'A', frequency: 0.185}
- // ]
+var rows, svg, time1 = '', time2 = '';
+// = [
+//  {letter: 'letter', frequency: 'frequency'},
+//  {letter: 'B', frequency: 0.085},
+//  {letter: 'A', frequency: 0.185}
+// ]
 
 var margin = {top: 40, right: 20, bottom: 50, left: 80},
     width = 960 - margin.left - margin.right,
@@ -104,29 +103,23 @@ $('#box').on('change', function(){
   sort(rows)
 });
 
-// $('.date').on('change', function(){
-//   time1 = $('#time1').val();
-//   time2 = $('#time2').val();
-// });
-
 $('#radio-form').on('change', function(e){
   $('#box').removeAttr('checked');
   if (e.target.id === 'items'){
     fetch(document.URL);
   }
   else if (e.target.id === 'menu'){
-    graph_header = $('#graph-header');
-    time1 = graph_header.attr('time1');
-    time2 = graph_header.attr('time2');
     fetch('/menus/'+$('#menu').attr('data')+'/sections?time1='+time1+'&time2='+time2);
   }
   else if (e.target.id === 'tables'){
-    fetch(tables_url);
+    fetch('/restaurants/'+$('#items').attr('data')+'/tables?time1='+time1+'&time2='+time2);
   }
 });
 
 $(function() {
   fetch(document.URL)
+  time1 = $('#graph-header').attr('time1');
+  time2 = $('#graph-header').attr('time2');
 });
 
 
