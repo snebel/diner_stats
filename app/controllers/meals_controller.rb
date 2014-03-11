@@ -17,19 +17,19 @@ class MealsController < ApplicationController
 
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @meals = meals_by_time(@restaurant, params[:time1], params[:time2])
+    @meals = meals_by_time(@restaurant.meals, params[:time1], params[:time2])
     @diners = total_diners(@meals)
     @avg_duration = avg_duration(@meals)
     @revenue = revenue(@meals)
     @avg_price = (@revenue / @meals.count).round(2) unless @meals.count == 0
     @avg_customer_price = (@revenue / @diners).round(2) unless @diner == 0
     @menu = @restaurant.menus.last
-    # binding.pry
+    @timeframe = params[:time1] ? "#{params[:time1]} - #{params[:time2]}" : "all time" 
 
     respond_to do |format|
       format.html
       format.json do
-        render json: item_revenue_data(@meals.map{|m| m.menu_items}.flatten.uniq, @revenue)
+        render json: item_revenue_data(@meals, @revenue)
       end
     end
   end

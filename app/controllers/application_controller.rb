@@ -36,9 +36,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def item_revenue_data(items, revenue)
-    items.map do |item|
-      num = item.meal_memberships.count
+  def item_revenue_data(meals, revenue)
+    items = meals.map{|meal| meal.menu_items}.flatten
+    items.uniq.map do |item|
+      num = items.count(item)
       freq = num * item.price / revenue
       {letter: "#{item.name[0..3]}.", frequency: freq}
     end
@@ -70,12 +71,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def meals_by_time(restaurant, time1, time2)
-    # binding.pry
+  def meals_by_time(meals, time1, time2)
     if time1 == nil || time1 == ''
-      restaurant.meals.sort_by(&:created_at)
+      meals.sort_by(&:created_at)
     else
-      restaurant.meals.select do |meal|
+      meals.select do |meal|
         meal_date = meal.created_at.to_date
         meal_date >= time1.to_date && meal_date <= time2.to_date
       end.sort_by(&:created_at)

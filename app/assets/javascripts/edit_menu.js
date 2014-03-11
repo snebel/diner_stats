@@ -18,11 +18,19 @@ $('#add-section').on('click', function(e){
 });
 
 function appendSection(data) {
-  var section = $('<h3>')
-    .html("<a href='/menus/" + data.menu_id + '/sections/' + data.id + "/edit'>" + data.name + "</a>");
-  section.attr('')
-  section.append("<a class='delete-section' href=''><small> delete</small></a>")
-  $('#sections').append(section);
+  var section = $('<h3>').attr('id', data.id);
+  var a = $("<a href='' class='modal-link'>")
+    .attr('data', 'edit-section')
+    .attr('id', data.id)
+    .attr('menu-id', data.menu_id)
+    .attr('data-toggle', 'modal')
+    .attr('data-target', '#myModal')
+    .text(data.name);
+  section.append(a);
+  section.append("<a class='delete-section' href=''><small> delete</small></a>");
+  var div = $('<div>').attr('id', data.id)
+  div.append(section);
+  $('#sections').append(div);
 }
 
 $('.delete-section').on('click', function(e){

@@ -5,17 +5,17 @@
   $('.nav li:contains("View Stats")').addClass('active');
 </script>
 
-<h1 id='<%= @restaurant.id %>'><%=  @restaurant.name %></h1>
+<h1 id='<%= @restaurant.id %>'><%= @restaurant.name %></h1>
 
 <form action='<%= restaurant_meals_path(@restaurant.id) %>'>
-	<% meal_dates = @restaurant.meals.map{|m| m.created_at.strftime("%d %b %Y")}.uniq.sort %>
+	<% meal_dates = @restaurant.meals.map{|m| m.created_at.strftime("%b %d, %Y")}.uniq.sort %>
 	<%= select_tag :time1, options_for_select(meal_dates), id: 'time1', class: 'date' %> 
 	to <%= select_tag :time2, options_for_select(meal_dates), id: 'time2', class: 'date' %>
 	<%= submit_tag 'find', class: 'btn btn-default btn-xs' %>
 </form>
 
 <div class='panel panel-default'>
-	<div class='panel-heading' style='text-align:center;'><b>Restaurant Stats</b></div>
+	<div class='panel-heading' style='text-align:center;'><h4>Restaurant Stats <small><%= @timeframe %></small></h4></div>
 	<table class='table'>
 		<thead>
 			<tr>
@@ -38,12 +38,12 @@
 
 
 <div class='panel panel-default'>
-	<div class='panel-heading' style='text-align:center;'><b>All Meals Served</b></div>
+	<div class='panel-heading' style='text-align:center;'><h4>All Meals Served <small><%= @timeframe %></small></h4></div>
 
 	<%= render partial: "shared/meals_table" %>
 </div>
 
-<h2>Revenue Breakdown Graph</h2>
+<h2>Revenue Breakdown Graph <small><%= @timeframe %></small></h2>
 
 <form id='radio-form'>
 	<input type="radio" name='mode' id='restaurant' data='<%= @restaurant.id %>' checked> Menu Items
@@ -52,7 +52,6 @@
 </form>
 
 <input type="checkbox" id='box'> Sort
-
 
 <%= javascript_include_tag 'modal_render' %>
 <%= javascript_include_tag 'bar_graph' %>

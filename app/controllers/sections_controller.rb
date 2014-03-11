@@ -18,12 +18,9 @@ class SectionsController < ApplicationController
   def index
     menu = Menu.find(params[:menu_id])
     sections = menu.sections
-    revenue = revenue(menu.meals)
-    respond_to do |format|
-      format.json do
-        render json: section_revenue_data(sections, revenue)
-      end
-    end
+    meals = meals_by_time(menu.meals, params[:time1], params[:time2])
+    revenue = revenue(meals)
+    render json: section_revenue_data(sections, revenue)
   end
   
 end
