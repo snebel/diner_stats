@@ -12,12 +12,19 @@ class MealsController < ApplicationController
 
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
+    if params[:time1].to_date > params[:time2].to_date
+      params[:time1] = nil
+      params[:time2] = nil
+      flash[:notice] = "From-date can't be later than to-date"
+    else
+      flash[:notice] = ''
+    end
     @meals = meals_by_time(@restaurant.meals, params[:time1], params[:time2])
     @diners = total_diners(@meals)
     @avg_duration = avg_duration(@meals)
     @revenue = revenue(@meals)
     @avg_price = (@revenue / @meals.count).round(2) unless @meals.count == 0
-    @avg_customer_price = (@revenue / @diners).round(2) unless @diner == 0
+    @avg_customer_price = (@revenue / @diners).round(2) unless @diners == 0
     @menu = @restaurant.menus.last
     @timeframe = params[:time1] ? "#{params[:time1]} - #{params[:time2]}" : "all time" 
 

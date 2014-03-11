@@ -7,10 +7,11 @@
 
 <h1 id='<%= @restaurant.id %>'><%= @restaurant.name %></h1>
 
-<h4>See stats by date</h4>
+<h4>view stats by date</h4>
+<%= flash[:notice] %>
 <form action='<%= restaurant_meals_path(@restaurant.id) %>'>
 	<% meal_dates = @restaurant.meals.map{|m| m.created_at.strftime("%b %d, %Y")}.uniq.sort %>
-	<%= select_tag :time1, options_for_select(meal_dates), id: 'time1', class: 'date' %> 
+	from <%= select_tag :time1, options_for_select(meal_dates), id: 'time1', class: 'date' %> 
 	to <%= select_tag :time2, options_for_select(meal_dates), id: 'time2', class: 'date' %>
 	<%= submit_tag 'find', class: 'btn btn-default btn-xs' %>
 </form>
@@ -43,6 +44,7 @@
 
 	<%= render partial: "shared/meals_table" %>
 </div>
+
 
 <h2 id='graph-header' time1='<%= params[:time1] %>' time2='<%= params[:time2] %>'>Revenue Breakdown Graph <small><%= @timeframe %></small></h2>
 
