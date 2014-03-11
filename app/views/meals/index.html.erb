@@ -43,10 +43,10 @@
 	<%= render partial: "shared/meals_table" %>
 </div>
 
-<h2>Revenue Breakdown Graph <small><%= @timeframe %></small></h2>
+<h2 id='graph-header' time1='<%= params[:time1] %>' time2='<%= params[:time2] %>'>Revenue Breakdown Graph <small><%= @timeframe %></small></h2>
 
 <form id='radio-form'>
-	<input type="radio" name='mode' id='restaurant' data='<%= @restaurant.id %>' checked> Menu Items
+	<input type="radio" name='mode' id='items' data='<%= @restaurant.id %>' checked> Menu Items
 	<input type="radio" name='mode' id='menu' data='<%= @menu.id %>'> Menu Sections
 	<input type="radio" name='mode' id='tables' data='<%= @menu.id %>'> Tables
 </form>

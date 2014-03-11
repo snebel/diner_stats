@@ -45,16 +45,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def section_rev(section)
-    section.menu_items.inject(0) do |sum, item|
-      sum += (item.meal_memberships.count * item.price)
-    end
+  def section_revenue(section_id, meals)
+    items = meals.map{|meal| meal.menu_items}.flatten
+    items.select!{|item| item.section_id == section_id}
+    items.inject(0){|sum, item| sum += item.price}
   end
 
-  def section_revenue_data(sections, revenue)
+  def sections_revenue_data(meals, sections, revenue)
     sections.map do |section|
-      total_rev = section_rev(section)
-      rev_share = (total_rev / revenue).round(2)
+      section_rev = section_revenue(section.id, meals)
+      rev_share = (section_rev / revenue).round(2)
       {letter: section.name, frequency: rev_share}
     end
   end
