@@ -12,7 +12,7 @@ class MealsController < ApplicationController
 
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
-    if params[:time1].to_date > params[:time2].to_date
+    if params[:time1] && params[:time1].to_date > params[:time2].to_date
       params[:time1] = nil
       params[:time2] = nil
       flash[:notice] = "From-date can't be later than to-date"

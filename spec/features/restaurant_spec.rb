@@ -2,37 +2,28 @@ require 'spec_helper'
 
 feature 'Setting Up a Restaurant' do
   before do
-    @restaurant = create(:restaurant)
-    visit restaurant_path(@restaurant)
+    @restaurant = create(:restaurant, id: 1)
+    @menu = create(:menu, restaurant_id: @restaurant.id)
+    @section = create(:section, menu_id: @menu.id)
+  end
+
+  scenario 'add a new menu section' do
+    visit edit_restaurant_menu_path(@restaurant.id, @menu.id)
+    fill_in "name", with: 'Apps'
+    click_button 'add section'
+    current_path.should == edit_restaurant_menu_path(@restaurant.id, @menu.id)
+    visit edit_restaurant_menu_path(@restaurant.id, @menu.id)
+  end
+
+  scenario 'add a new menu item' do
+    visit edit_menu_section_path(@menu, @section)
+    fill_in "name", with: 'Salad'
+    fill_in "price", with: '5'
+    page.should have_content('add item')
   end
 
   scenario 'restaurant show page' do
-    expect(page).to have_content @restaurant.name
+    visit restaurant_path(@restaurant)
+    expect(page).to have_content
   end
-
-  scenario 'add a new menu' do
-    fill_in "name", with: 'Dinner Menu'
-    click_button 'add menu'
-    expect(page).to have_content 'Dinner Menu'
-  end
-end
-
-feature 'adding menu section' do
-  before do
-    # @restaurant = create(:restaurant)
-    @menu = create(:menu)
-    visit edit_restaurant_menu_path(@menu.restaurant_id, @menu.id)
-  end
-
-  scenario 'menu edit page has content' do
-    expect(page).to have_content @menu.name
-  end
-
-  # scenario 'add a new section menu' do
-  #   fill_in "section-name", with: 'Appetizers'
-  #   click_button "add section"
-  #   expect(page).to have_content @menu.restaurant.name
-  #   @menu.sections.should_not be_empty 
-  # end --> adding sections not working...?
-
 end

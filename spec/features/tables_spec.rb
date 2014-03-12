@@ -1,25 +1,27 @@
 require 'spec_helper'
- # Capybara.current_driver = :selenium
+
 
 feature 'managing a table' do
 	before do
-		@table = create(:table)
-		visit restaurant_path(@table.restaurant.id)
+		@restaurant = create(:restaurant, id: 1)
+    @menu = create(:menu, restaurant_id: @restaurant.id)
+    @section = create(:section, menu_id: @menu.id)
+    @item = create(:menu_item, section_id: @section.id)
+		@table = create(:table, restaurant_id: @restaurant.id)
+		visit restaurant_path(@restaurant)
 	end
 
 	scenario 'restaurant has a page for managing tables' do
-		page.should have_content @table.restaurant.name
+		page.should have_content @table.number
 	end
 
-	scenario 'can create a meal with number of diners' do
-		num = Meal.count
-		select('3')
-		click_button 'seat'
-		# @table.meals.should_not be_empty # why isn't this working?		
+	scenario 'can click a link to seat diners' do
+		find('.table-div').find('.dropdown-menu').find('a', text: 4).click
+		page.should have_content 'Add Items'
+		page.should have_content 'End Meal'
 	end
 
 	scenario 'can update price by adding a menu item' do
-		click_button 'seat'
-		click_button 'add item'
+		find('.checkbox').should have_content(@item.name)
 	end
 end

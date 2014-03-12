@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :table do
     association :restaurant
     max_seats 4
+    number 1
   end
 end
