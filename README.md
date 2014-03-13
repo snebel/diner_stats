@@ -1,30 +1,27 @@
 #DinerStats
 
 ###Developers: Sam Nebel
-
-###<http://dinerstats.herokuapp.com>
+#####<http://dinerstats.herokuapp.com>
 
 ####What does it do?  
 
-*Watch Atlas is a D3.js visualization of global Youtube trends.*
+*DinerStats is a seating-software/POS system built to help restaurants optimize their business. It offers a simple interface with a strong emphasis on gathering and analyzing data on customer behavior.*
 
-####Why this idea?
-
-As part of its Trends Dashboard, Youtube now includes a Trends Map (<https://www.youtube.com/trendsmap>). However, the map is limited to US trends and is currently displayed against a pretty bland 2D map backdrop. So while it is a cool, useful feature, it definitely still has room for improvement. 
-
-Considering the sheer amount of data Youtube collects about global video trends, my group for this project at General Assembly's Web Development Immersive decided we could do them one better. **By tapping into the Youtube API and the powerful D3 Javascript library, we created a simple, yet engaging way to browse Youtube trends across the globe (in the 62 countries that Youtube provides data on, that is).**
+*It has the functionality for a business owner to configure a restaurant with a menu, menu sections, and tables. Meals can then be created and updated in real time. DinerStats calculates various statistics on revenue, meal duration, number of diners, individual tables, individual menu items, and individual menu sections. D3.js, tables, and modals are used to visualize relevant metrics, which can be filtered by time.*
 
 ####How do I use it?
-* Drag the globe or click the side arrows to navigate around the world.
-* Hover over a country to immediately see its top three videos.
-* Click on a country to view a detailed breakdown of top videos (overall, and from a variety of categories) as well as statistics that compare that country's viewing patterns with others around the globe.
+* The site is currently configured to root to an example restaurant set up for demonstration purposes. Feel free to click around and explore.
+* Meals are created by clicking the 'Seat Table' link and selecting a number of diners.
+* Menu Items can be added to a meal by selecting items from the menu on the left and clicking 'Add Items'. Click 'End Meal' when a meal is finished.
+* The 'View Stats' page contains a table of meal-statistics for all meals in the specified timeframe. Individual menu items and tables are clickable to view further information.
+* The graph at the bottom of the page visualizes the percent of total revenue in the specified timeframe each elemnt on the x-axis is responsible for. You can set the category of the x-axis to be either menu items, menu sections, or tables.
 
 ###Screenshots
 **These screenshots represent the three main views of the app as they coincide with the above 'How do I use it?' description.** 
 
-####Main Navigation
-![atlas_main](https://www.evernote.com/shard/s82/sh/752f9248-2bf0-47df-9298-852faab01f3c/30fd46fabe827ab2e1f29bdc528fa81b/deep/0/Atlas_main.png "Atlas Main")
-####On Country Hover
-![atlas_hover](https://www.evernote.com/shard/s82/sh/0192c4fe-02c2-45d5-bea4-f9011527dd5d/85e763259486a74e7bd1ac2f7f683b47/deep/0/Atlas_hover.png "Atlas Hover")
-####On Country Click
-![atlas_click](https://www.evernote.com/shard/s82/sh/ec970ac7-561e-4466-829a-2d62ffe2e39b/23279c613981583bb5c229674bfc3b99/deep/0/Atlas_click.png "Atlas Click")
+####Table Seating Interface
+![]( "")
+####Meals Table
+![]( "")
+####Graph
+![]( "")
