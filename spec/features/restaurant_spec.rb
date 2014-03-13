@@ -27,3 +27,17 @@ feature 'Setting Up a Restaurant' do
     expect(page).to have_content
   end
 end
+
+feature 'Viewing Meals Index Page' do
+  before do
+    @restaurant = create(:restaurant)
+    @menu = create(:menu, restaurant_id: @restaurant.id)
+    @section = create(:section, menu_id: @menu.id)
+    visit restaurant_meals_path(@restaurant.id)
+  end
+
+  scenario 'page has right content' do
+    expect(page).to have_content @restaurant.name
+  end
+
+end

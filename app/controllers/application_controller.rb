@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
   
   def avg_duration(meals)
     return 0 if meals.empty?
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   def total_diners(meals)
     return 0 if meals.empty?
-  	meals.map{|meal| meal.diners}.reduce(:+)
+  	meals.inject(0){|sum, meal| sum += meal.diners}
   end
 
   def avg_customer_price(meals)
@@ -39,8 +39,7 @@ class ApplicationController < ActionController::Base
   def item_revenue_data(meals, revenue)
     items = meals.map{|meal| meal.menu_items}.flatten
     items.uniq.map do |item|
-      num = items.count(item)
-      freq = num * item.price / revenue
+      freq = items.count(item) * item.price / revenue
       {letter: "#{item.name[0..3]}.", frequency: freq}
     end
   end
@@ -51,10 +50,10 @@ class ApplicationController < ActionController::Base
     items.inject(0){|sum, item| sum += item.price}
   end
 
-  def sections_revenue_data(meals, sections, revenue)
+  def sections_revenue_data(meals, sections)
     sections.map do |section|
       section_rev = section_revenue(section.id, meals)
-      rev_share = (section_rev / revenue).round(2)
+      rev_share = (section_rev / revenue(meals)).round(2)
       {letter: section.name, frequency: rev_share}
     end
   end
@@ -64,10 +63,10 @@ class ApplicationController < ActionController::Base
     table_meals.inject(0){|sum, meal| sum += meal.price}
   end
 
-  def table_revenue_data(meals, tables, revenue)
+  def table_revenue_data(meals, tables)
     tables.map do |table|
       table_rev = table_revenue(table.id, meals)
-      rev_share = (table_rev / revenue).round(2)
+      rev_share = (table_rev / revenue(meals)).round(2)
       {letter: table.number, frequency: rev_share}
     end
   end
@@ -80,6 +79,16 @@ class ApplicationController < ActionController::Base
         meal_date = meal.created_at.to_date
         meal_date >= time1.to_date && meal_date <= time2.to_date
       end.sort_by(&:created_at)
+    end
+  end
+
+  def validate_times(params)
+    if params[:time1] && params[:time1].to_date > params[:time2].to_date
+      params[:time1] = nil
+      params[:time2] = nil
+      flash[:notice] = "From-date can't be later than to-date"
+    else
+      flash[:notice] = ''
     end
   end
 

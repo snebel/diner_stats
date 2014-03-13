@@ -1,7 +1,6 @@
 class Table < ActiveRecord::Base
   belongs_to :restaurant
   has_many :meals
-  # has_many :features
   
   def total_price
   	meals.inject(0) {|sum, meal| sum += meal.price}
@@ -22,8 +21,8 @@ class Table < ActiveRecord::Base
   end
 
   def avg_meal_time
-  	total_time = meals.inject(0) {|sum, meal| sum += meal.duration/60.0}
-  	return 0 if total_time == 0
+    total_time = meals.inject(0) {|sum, meal| sum += meal.duration/60.0}
+    return 0 if total_time == 0
     (total_time / meals.count).round(1)
   end
 

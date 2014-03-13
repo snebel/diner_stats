@@ -12,11 +12,10 @@ class TablesController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     @tables = @restaurant.tables
     @meals = meals_by_time(@restaurant.meals, params[:time1], params[:time2])
-    revenue = revenue(@meals)
     respond_to do |format|
       format.html
       format.json do
-        render json: table_revenue_data(@meals, @tables, revenue)
+        render json: table_revenue_data(@meals, @tables)
       end
     end
   end

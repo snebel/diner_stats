@@ -5,11 +5,11 @@ class MenuItem < ActiveRecord::Base
 
   def item_percent
   	num = self.meal_memberships.count.to_f
-		total = self.section.menu.meals.inject(0){|n, m| n += m.menu_items.count}
+	  total = self.section.menu.meals.inject(0){|n, m| n += m.menu_items.count}
   	((num / total)*100).round(1)
   end
 
-  def table_percent
+  def meal_percent
   	num = self.meals.uniq.count.to_f
   	total = self.section.menu.meals.count
   	((num / total)*100).round(1)
