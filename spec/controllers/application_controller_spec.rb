@@ -3,12 +3,13 @@ require "spec_helper"
 describe ApplicationController do
   before do
     @table = create(:table)
+    @section = create(:section)
     @meals = [
       create(:meal, duration: 120, price: 5, diners: 2),
       create(:meal, duration: 60, price: 6, diners: 2, table_id: @table.id),
       create(:meal, duration: 180, price: 7, diners: 2, table_id: @table.id)
     ]
-    @item = create(:menu_item)
+    @item = create(:menu_item, section_id: @section.id)
     MealMembership.create(meal_id: @meals.first.id, menu_item_id: @item.id)
   end
 
@@ -74,6 +75,37 @@ describe ApplicationController do
       controller.meals_by_time(@meals, '', nil).should eq @meals
     end
   end
+
+  describe "#section_reveue" do
+    it "given a section_id and meals, it can determine the revenue from meals in that section" do
+      controller.section_revenue(@section.id, @meals).should eq 1.99
+    end
+  end
+
+  describe "#section_reveue_data" do
+    it "can create hash of revenue frequency for sections based on a group of meals" do
+      data = controller.sections_revenue_data(@meals, Section.all)
+      data.size.should eq 1
+      data[0][:frequency].should eq (1.99/18).round(2)
+    end
+  end
+
+  describe "#validate_times" do
+    it "changes params when time2 is invalid" do
+      params = {time1: Meal.first.created_at.to_date + 1, time2: Meal.last.created_at}
+      controller.validate_times(params)
+      params[:time1].should eq nil
+      params[:time2].should eq nil
+      flash[:notice].should eq "From-date can't be later than to-date"
+    end
+
+    it "doesn't flash a notice when there are no times params" do
+      params = {}
+      controller.validate_times(params)
+      flash[:notice].should eq ''
+    end
+  end
+
 end
 
 

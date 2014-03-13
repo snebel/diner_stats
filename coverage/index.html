@@ -14,18 +14,18 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-03-13T01:46:19-04:00">2014-03-13T01:46:19-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-03-13T17:10:24-04:00">2014-03-13T17:10:24-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">70.34%</span></span>
+    (<span class="covered_percent"><span class="red">74.58%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.16
+         1.27
        </span>
     </span> hits/line)
   </h2>
@@ -33,8 +33,8 @@
   <div>
     <b>23</b> files in total.
     <b>236</b> relevant lines. 
-    <span class="green"><b>166</b> lines covered</span> and
-    <span class="red"><b>70</b> lines missed </span>
+    <span class="green"><b>176</b> lines covered</span> and
+    <span class="red"><b>60</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -52,12 +52,12 @@
       
       <tr>
         <td class="strong"><a href="#357b35b95c892d56ef3ed5a0411d1c76b1ccb16e" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
-        <td class="yellow strong">81.48 %</td>
+        <td class="green strong">100.0 %</td>
         <td>95</td>
         <td>54</td>
-        <td>44</td>
-        <td>10</td>
-        <td>2.1</td>
+        <td>54</td>
+        <td>0</td>
+        <td>2.6</td>
       </tr>
       
       <tr>
@@ -289,11 +289,11 @@
           <div class="file_list_container" id="Controllers">
   <h2>
     <span class="group_name">Controllers</span>
-    (<span class="covered_percent"><span class="red">59.3%</span></span>
+    (<span class="covered_percent"><span class="red">65.12%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.04
+         1.2
        </span>
     </span> hits/line)
   </h2>
@@ -301,8 +301,8 @@
   <div>
     <b>8</b> files in total.
     <b>172</b> relevant lines. 
-    <span class="green"><b>102</b> lines covered</span> and
-    <span class="red"><b>70</b> lines missed </span>
+    <span class="green"><b>112</b> lines covered</span> and
+    <span class="red"><b>60</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -320,12 +320,12 @@
       
       <tr>
         <td class="strong"><a href="#357b35b95c892d56ef3ed5a0411d1c76b1ccb16e" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
-        <td class="yellow strong">81.48 %</td>
+        <td class="green strong">100.0 %</td>
         <td>95</td>
         <td>54</td>
-        <td>44</td>
-        <td>10</td>
-        <td>2.1</td>
+        <td>54</td>
+        <td>0</td>
+        <td>2.6</td>
       </tr>
       
       <tr>
@@ -714,11 +714,11 @@
         <div class="source_table" id="357b35b95c892d56ef3ed5a0411d1c76b1ccb16e">
   <div class="header">
     <h3>app/controllers/application_controller.rb</h3>
-    <h4><span class="yellow">81.48 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
       <b>54</b> relevant lines. 
-      <span class="green"><b>44</b> lines covered</span> and
-      <span class="red"><b>10</b> lines missed.</span>
+      <span class="green"><b>54</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -797,14 +797,14 @@
           <code class="ruby">  def revenue(meals)</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="13">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="8" data-linenumber="13">
+          <span class="hits">8</span>
           
           <code class="ruby">    return 0 if meals.empty?</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="14">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="28" data-linenumber="14">
+          <span class="hits">28</span>
           
           <code class="ruby">  	meals.inject(0) {|sum, meal| sum += meal.price}.round(2)</code>
         </li>
@@ -1007,20 +1007,20 @@
           <code class="ruby">  def section_revenue(section_id, meals)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="48">
-          
+        <li class="covered" data-hits="8" data-linenumber="48">
+          <span class="hits">8</span>
           
           <code class="ruby">    items = meals.map{|meal| meal.menu_items}.flatten</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="49">
-          
+        <li class="covered" data-hits="4" data-linenumber="49">
+          <span class="hits">4</span>
           
           <code class="ruby">    items.select!{|item| item.section_id == section_id}</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="50">
-          
+        <li class="covered" data-hits="4" data-linenumber="50">
+          <span class="hits">4</span>
           
           <code class="ruby">    items.inject(0){|sum, item| sum += item.price}</code>
         </li>
@@ -1043,26 +1043,26 @@
           <code class="ruby">  def sections_revenue_data(meals, sections)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="54">
-          
+        <li class="covered" data-hits="1" data-linenumber="54">
+          <span class="hits">1</span>
           
           <code class="ruby">    sections.map do |section|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="55">
-          
+        <li class="covered" data-hits="1" data-linenumber="55">
+          <span class="hits">1</span>
           
           <code class="ruby">      section_rev = section_revenue(section.id, meals)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="56">
-          
+        <li class="covered" data-hits="1" data-linenumber="56">
+          <span class="hits">1</span>
           
           <code class="ruby">      rev_share = (section_rev / revenue(meals)).round(2)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="57">
-          
+        <li class="covered" data-hits="1" data-linenumber="57">
+          <span class="hits">1</span>
           
           <code class="ruby">      {letter: section.name, frequency: rev_share}</code>
         </li>
@@ -1235,26 +1235,26 @@
           <code class="ruby">  def validate_times(params)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="86">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="86">
+          <span class="hits">3</span>
           
           <code class="ruby">    if params[:time1] &amp;&amp; params[:time1].to_date &gt; params[:time2].to_date</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="87">
-          
+        <li class="covered" data-hits="1" data-linenumber="87">
+          <span class="hits">1</span>
           
           <code class="ruby">      params[:time1] = nil</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="88">
-          
+        <li class="covered" data-hits="1" data-linenumber="88">
+          <span class="hits">1</span>
           
           <code class="ruby">      params[:time2] = nil</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="89">
-          
+        <li class="covered" data-hits="1" data-linenumber="89">
+          <span class="hits">1</span>
           
           <code class="ruby">      flash[:notice] = &quot;From-date can&#39;t be later than to-date&quot;</code>
         </li>
@@ -1265,8 +1265,8 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="91">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="91">
+          <span class="hits">2</span>
           
           <code class="ruby">      flash[:notice] = &#39;&#39;</code>
         </li>

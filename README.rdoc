@@ -1,3 +1,0 @@
-== README
-
-A tool for restaurants to gather and analyze data on patron behavior
