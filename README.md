@@ -17,11 +17,10 @@
 * The graph at the bottom of the page visualizes the percent of total revenue in the specified timeframe each elemnt on the x-axis is responsible for. You can set the category of the x-axis to be either menu items, menu sections, or tables.
 
 ###Screenshots
-**These screenshots represent the three main views of the app as they coincide with the above 'How do I use it?' description.** 
 
 ####Table Seating Interface
-![]( "")
-####Meals Table
-![]( "")
-####Graph
-![]( "")
+![](http://i.imgur.com/CqF5SLx.png/ "")
+####Menu Item Stats
+![](http://i.imgur.com/5sFSsO8.png?1 "")
+####Revenue Graph
+![](http://i.imgur.com/x2BfHgH.png "")
